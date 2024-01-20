@@ -427,7 +427,7 @@ function MailLogin(data) {
 		
 		localStorage.setItem('IsReminderShow', true);
         if (redurl == "" || redurl == null || redurl == undefined) {
-            var file = "task-summary.html";
+            var file = "task.html";
             window.location.href = prt + "//" + lhost + "/" + file;
 		 }
 		else{
