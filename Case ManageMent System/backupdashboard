@@ -17,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
 
     <!-- PAGE TITLE HERE -->
-    <title>Client Dashboard</title>
+    <title>W3CRM Customer Relationship Management</title>
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
 
@@ -29,7 +29,6 @@
     <link href="vendor/jvmap/jquery-jvectormap.css" rel="stylesheet">
     <link href="../../cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css" rel="stylesheet">
     <link href="vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 
     <!-- tagify-css -->
     <link href="vendor/tagify/dist/tagify.css" rel="stylesheet">
@@ -38,51 +37,9 @@
     <link href="css/style.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/20.1.6/css/dx.common.css" />
 	<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/20.1.6/css/dx.light.css" />
-
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
 	
 
     <style>
-        
-
-#editor{
-  padding: 2em;
-  /* background: #E6E6E6; */
-  border-radius: 3px;
-  /*box-shadow: 0 1px 5px rgba(0,0,0,0.15) inset;*/
-  outline: none;
-  border: 2px solid transparent;
-  background: rgb(177 189 199 / 10%);
-    border-color: rgb(177 189 199 / 10%);
-}
-
-#editor:focus {
-  background: #FFF;
-  border-color: #69c773;
-}
-        .uploadfile p {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    line-height: 60px;
-    color: #000;
-}
-.uploadfile {
-    width: 100%;
-    height: 60px;
-    border: 2px dashed;
-    background-color: #ededed;
-}
-.uploadfile input {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    width: 93%;
-    height: 55px;
-    outline: none;
-    opacity: 0;
-}
         .bootstrap-datetimepicker-widget.dropdown-menu {
     display: block;
     margin: 2px 0;
@@ -90,31 +47,9 @@
     width: 18rem !important;
     z-index: 1;
 }
-.menu-icon{
-    padding-right: 10px;
-}
+
 .btn {
     padding: 4px 9px !important;
-}
-.modal-custom {
-    max-width: 1250px; /* Set your desired max-width */
-    margin: auto;
-  }
-
-.mediaCustom {
-    background: #daf5e6;
-    color: #3AC977;
-    background: #eee;
-    border-radius: 100%;
-    padding: 6px;
-    margin-right: 3px;
-    font-size: 0.813rem;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    align-self: start;
 }
     </style>
 </head>
@@ -1164,11 +1099,216 @@
           <!--**********************************
             Sidebar start
         ***********************************-->
-        <div class="deznav" style="padding-top: 0px;">
+        <div class="deznav">
             <div class="deznav-scroll">
-                <ul class="metismenu" id="my-menu">
+                <ul class="metismenu" id="menu">
                     <!-- <li class="menu-title"></li> -->
-                    
+                    <li class="mm-active">
+                        <a id="dashboard-tab" href="#dashboard" data-bs-toggle="pill"
+                            class="nav-link active show mm-active" aria-expanded="false">
+                            <div class="menu-icon">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M2.5 7.49999L10 1.66666L17.5 7.49999V16.6667C17.5 17.1087 17.3244 17.5326 17.0118 17.8452C16.6993 18.1577 16.2754 18.3333 15.8333 18.3333H4.16667C3.72464 18.3333 3.30072 18.1577 2.98816 17.8452C2.67559 17.5326 2.5 17.1087 2.5 16.6667V7.49999Z"
+                                        stroke="#888888" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M7.5 18.3333V10H12.5V18.3333" stroke="#888888" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <span class="nav-text">Case Details</span>
+                        </a>
+                    </li>
+                    <li class="contactData"><a id="contacts-tab" href="#my-contacts" data-bs-toggle="pill"
+                            class="nav-link " aria-expanded="false">
+                            <div class="menu-icon">
+                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M10.986 14.0673C7.4407 14.0673 4.41309 14.6034 4.41309 16.7501C4.41309 18.8969 7.4215 19.4521 10.986 19.4521C14.5313 19.4521 17.5581 18.9152 17.5581 16.7693C17.5581 14.6234 14.5505 14.0673 10.986 14.0673Z"
+                                        stroke="#888888" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M10.986 11.0054C13.3126 11.0054 15.1983 9.11881 15.1983 6.79223C15.1983 4.46564 13.3126 2.57993 10.986 2.57993C8.65944 2.57993 6.77285 4.46564 6.77285 6.79223C6.76499 9.11096 8.63849 10.9975 10.9563 11.0054H10.986Z"
+                                        stroke="#888888" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <span class="nav-text">Contacts</span>
+                        </a>
+                    </li>
+                    <li><a id="documents-tab" href="#documents" class="nav-link" data-bs-toggle="pill"
+                            aria-expanded="false">
+                            <div class="menu-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M14.7379 2.76181H8.08493C6.00493 2.75381 4.29993 4.41181 4.25093 6.49081V17.2038C4.20493 19.3168 5.87993 21.0678 7.99293 21.1148C8.02393 21.1148 8.05393 21.1158 8.08493 21.1148H16.0739C18.1679 21.0298 19.8179 19.2998 19.8029 17.2038V8.03781L14.7379 2.76181Z"
+                                        stroke="#888888" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M14.4751 2.75V5.659C14.4751 7.079 15.6231 8.23 17.0431 8.234H19.7981"
+                                        stroke="#888888" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M14.2882 15.3585H8.88818" stroke="#888888" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M12.2432 11.606H8.88721" stroke="#888888" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <span class="nav-text">Assignment Details</span>
+                        </a>
+                    </li>
+                    <li><a id="address-tab" href="#address" class="nav-link" data-bs-toggle="pill"
+                            aria-expanded="false">
+                            <div class="menu-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.8496 4.25031V6.67031" stroke="#888888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M13.8496 17.7601V19.7841" stroke="#888888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M13.8496 14.3246V9.5036" stroke="#888888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M18.7021 20C20.5242 20 22 18.5426 22 16.7431V14.1506C20.7943 14.1506 19.8233 13.1917 19.8233 12.001C19.8233 10.8104 20.7943 9.85039 22 9.85039L21.999 7.25686C21.999 5.45745 20.5221 4 18.7011 4H5.29892C3.47789 4 2.00104 5.45745 2.00104 7.25686L2 9.93485C3.20567 9.93485 4.17668 10.8104 4.17668 12.001C4.17668 13.1917 3.20567 14.1506 2 14.1506V16.7431C2 18.5426 3.4758 20 5.29787 20H18.7021Z" stroke="#888888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                            </div>
+                            <span class="nav-text">Meetings and Tasks</span>
+                        </a>
+                    </li>
+                    <li><a id="requestedDocuments-tab" href="#requestedDocuments" class="nav-link" data-bs-toggle="pill"
+                            aria-expanded="false">
+                            <div class="menu-icon">
+                                <svg style="margin-right: 0px;" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M14.7379 2.76181H8.08493C6.00493 2.75381 4.29993 4.41181 4.25093 6.49081V17.2038C4.20493 19.3168 5.87993 21.0678 7.99293 21.1148C8.02393 21.1148 8.05393 21.1158 8.08493 21.1148H16.0739C18.1679 21.0298 19.8179 19.2998 19.8029 17.2038V8.03781L14.7379 2.76181Z"
+                                        stroke="#888888" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M14.4751 2.75V5.659C14.4751 7.079 15.6231 8.23 17.0431 8.234H19.7981"
+                                        stroke="#888888" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M14.2882 15.3585H8.88818" stroke="#888888" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M12.2432 11.606H8.88721" stroke="#888888" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <span class="nav-text">
+                                Documents
+                            </span>
+                        </a>
+                    </li>
+                    <li><a id="chartsOfAccounts-tab" href="#chartsOfAccounts" class="nav-link" data-bs-toggle="pill"
+                            aria-expanded="false">
+                            <div class="menu-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.37121 10.2017V17.0619" stroke="#888888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12.0382 6.91913V17.0618" stroke="#888888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M16.6285 13.8268V17.0619" stroke="#888888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.6857 2H7.31429C4.04762 2 2 4.31208 2 7.58516V16.4148C2 19.6879 4.0381 22 7.31429 22H16.6857C19.9619 22 22 19.6879 22 16.4148V7.58516C22 4.31208 19.9619 2 16.6857 2Z" stroke="#888888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span class="nav-text">
+                                Chart of accounts
+                            </span>
+                        </a>
+                    </li>
+                    <li><a id="assetsGroup-tab" href="#assetsGroup" class="nav-link" data-bs-toggle="pill"
+                            aria-expanded="false">
+                            <div class="menu-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M9.59151 15.2068C13.2805 15.2068 16.4335 15.7658 16.4335 17.9988C16.4335 20.2318 13.3015 20.8068 9.59151 20.8068C5.90151 20.8068 2.74951 20.2528 2.74951 18.0188C2.74951 15.7848 5.88051 15.2068 9.59151 15.2068Z"
+                                        stroke="#888888" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M9.59157 12.0198C7.16957 12.0198 5.20557 10.0568 5.20557 7.63482C5.20557 5.21282 7.16957 3.24982 9.59157 3.24982C12.0126 3.24982 13.9766 5.21282 13.9766 7.63482C13.9856 10.0478 12.0356 12.0108 9.62257 12.0198H9.59157Z"
+                                        stroke="#888888" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M16.4829 10.8816C18.0839 10.6566 19.3169 9.28265 19.3199 7.61965C19.3199 5.98065 18.1249 4.62065 16.5579 4.36365"
+                                        stroke="#888888" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M18.5952 14.7322C20.1462 14.9632 21.2292 15.5072 21.2292 16.6272C21.2292 17.3982 20.7192 17.8982 19.8952 18.2112"
+                                        stroke="#888888" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <span class="nav-text">
+                                Assets Group
+                            </span>
+                        </a>
+                    </li>
+                    <li><a id="monthly-income-expenditure-tab" href="#monthly-income-expenditure" class="nav-link"
+                            data-bs-toggle="pill" aria-expanded="false">
+                            <div class="menu-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21.6389 14.3958H17.5906C16.1042 14.3949 14.8993 13.191 14.8984 11.7045C14.8984 10.2181 16.1042 9.01416 17.5906 9.01324H21.6389" stroke="#888888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M18.0485 11.6429H17.7369" stroke="#888888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.74766 3H16.3911C19.2892 3 21.6388 5.34951 21.6388 8.24766V15.4247C21.6388 18.3229 19.2892 20.6724 16.3911 20.6724H7.74766C4.84951 20.6724 2.5 18.3229 2.5 15.4247V8.24766C2.5 5.34951 4.84951 3 7.74766 3Z" stroke="#888888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7.03564 7.53814H12.4346" stroke="#888888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                            </div>
+                            <span class="nav-text">
+                                Monthly income/expenditure
+                            </span>
+                        </a>
+                    </li>
+                    <li><a id="income-contributions-tab" href="#income-contributions" class="nav-link"
+                            data-bs-toggle="pill" aria-expanded="false">
+                            <div class="menu-icon">
+                                <svg style="margin-right: 0px;" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M14.7379 2.76181H8.08493C6.00493 2.75381 4.29993 4.41181 4.25093 6.49081V17.2038C4.20493 19.3168 5.87993 21.0678 7.99293 21.1148C8.02393 21.1148 8.05393 21.1158 8.08493 21.1148H16.0739C18.1679 21.0298 19.8179 19.2998 19.8029 17.2038V8.03781L14.7379 2.76181Z"
+                                        stroke="#888888" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M14.4751 2.75V5.659C14.4751 7.079 15.6231 8.23 17.0431 8.234H19.7981"
+                                        stroke="#888888" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M14.2882 15.3585H8.88818" stroke="#888888" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M12.2432 11.606H8.88721" stroke="#888888" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <span class="nav-text">
+                                Income contributions
+                            </span>
+                        </a>
+                    </li>
+                    <li><a id="pre-appointment-details-tab" href="#pre-appointment-details" class="nav-link"
+                            data-bs-toggle="pill" aria-expanded="false">
+                            <div class="menu-icon">
+                                <svg style="margin-right: 0px;" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M14.7379 2.76181H8.08493C6.00493 2.75381 4.29993 4.41181 4.25093 6.49081V17.2038C4.20493 19.3168 5.87993 21.0678 7.99293 21.1148C8.02393 21.1148 8.05393 21.1158 8.08493 21.1148H16.0739C18.1679 21.0298 19.8179 19.2998 19.8029 17.2038V8.03781L14.7379 2.76181Z"
+                                        stroke="#888888" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M14.4751 2.75V5.659C14.4751 7.079 15.6231 8.23 17.0431 8.234H19.7981"
+                                        stroke="#888888" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M14.2882 15.3585H8.88818" stroke="#888888" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M12.2432 11.606H8.88721" stroke="#888888" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <span class="nav-text">
+                                Pre-appointment details
+                            </span>
+                        </a>
+                    </li>
+                    <li><a id="postal-resolutions-tab" href="#postal-resolutions" class="nav-link" data-bs-toggle="pill"
+                            aria-expanded="false">
+                            <div class="menu-icon">
+                                <svg style="margin-right: 0px;" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M14.7379 2.76181H8.08493C6.00493 2.75381 4.29993 4.41181 4.25093 6.49081V17.2038C4.20493 19.3168 5.87993 21.0678 7.99293 21.1148C8.02393 21.1148 8.05393 21.1158 8.08493 21.1148H16.0739C18.1679 21.0298 19.8179 19.2998 19.8029 17.2038V8.03781L14.7379 2.76181Z"
+                                        stroke="#888888" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M14.4751 2.75V5.659C14.4751 7.079 15.6231 8.23 17.0431 8.234H19.7981"
+                                        stroke="#888888" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M14.2882 15.3585H8.88818" stroke="#888888" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M12.2432 11.606H8.88721" stroke="#888888" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <span class="nav-text">
+                                Postal Resolutions
+                            </span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -1181,11 +1321,12 @@
             Content body start
         ***********************************-->
 
+
         <div class="tab-content content-body">
-            <div id="tab-0-page" class="">
-                <div id="dashboard">
+            <div id="dashboard" class="tab-pane fade active show">
+                <div>
                     <!-- row -->
-                    <div class="page-titles tab-pane">
+                    <div id="dashboard" class="page-titles tab-pane">
                         <ol class="breadcrumb">
                             <li>
                                 <h5 class="bc-title">CLient Name</h5>
@@ -1194,7 +1335,7 @@
                             </li>
                         </ol>
                         <div>
-                            <button id="edit-client-button" class="btn btn-outline-primary btn-sm">Edit Client</button>
+                            <a id="edit-client-button" href="#edit-client" data-bs-toggle="pill" class="btn btn-outline-primary btn-sm">Edit Client</a>
                             <button class="btn btn-outline-primary btn-sm">Add Client</button>
                             <button class="btn btn-outline-primary btn-sm">Edit Contact</button>
                             <button class="btn btn-outline-primary btn-sm">Add Contact</button>
@@ -1205,105 +1346,10 @@
                     </div>
                     <div class="container-fluid">
                         <div class="accordion accordion-primary">
-                            <div style="float: left; width: 49%; margin-left: 0.5%; margin-right: 0.5%; height: auto;"
-                                class="accordion-item col col-md-6 col-sm-12 col-xs-12">
+                            <div style="float: left; width: 49%; margin-left: 0.5%; margin-right: 0.5%; height: auto;" class="accordion-item col col-md-6 col-sm-12 col-xs-12">
                                 <div style="padding: 0.5rem 0.75rem" class="accordion-header rounded-lg" id="headingOne"
                                     data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne"
                                     aria-expanded="true" role="button">
-                                    <span class="accordion-header-icon"></span>
-                                    <span class="accordion-header-text">Key Facts</span>
-                                    <span class="accordion-header-indicator"></span>
-                                </div>
-                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                    data-bs-parent="#accordion-one">
-                                    <div class="accordion-body-text p-0">
-                                        <div id="keyFacts" style="padding:8px 0px 20px 0px;" class="card profile-card card-bx m-b30">
-                                            <!-- Key Facts Fields Here -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 2nd accoradion -->
-                            <div style="float: right; width: 49%; margin-left: 0.5%; margin-right: 0.5%; height: auto;"
-                                class="accordion-item col col-sm-12 col-lg-6 col-md-6">
-                                <div style="padding: 0.5rem 0.75rem" class="accordion-header rounded-lg" id="headingTwo"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-controls="collapseTwo"
-                                    role="button" aria-expanded="true">
-                                    <span class="accordion-header-icon"></span>
-                                    <span class="accordion-header-text">Key Facts Team</span>
-                                    <span class="accordion-header-indicator"></span>
-                                </div>
-                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
-                                    data-bs-parent="#accordion-one">
-                                    <div class="accordion-body-text p-0">
-                                        <div id="keyFactsTeam" style="padding:8px 0px 20px 0px;" class="card profile-card card-bx m-b30">
-                                            <!-- key facts team fields -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 3rd accordion remove collapsed for highlighting-->
-                            <div style="float: left; width: 49%; margin-left: 0.5%; margin-right: 0.5%; height: auto;"
-                                class="accordion-item col col-sm-12 col-lg-6 col-md-6">
-                                <div style="padding: 0.5rem 0.75rem" class="accordion-header collapsed rounded-lg"
-                                    id="headingThree" data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                    aria-controls="collapseThree" aria-expanded="true" role="button">
-                                    <span class="accordion-header-icon"></span>
-                                    <span class="accordion-header-text">Key Fact ID</span>
-                                    <span class="accordion-header-indicator"></span>
-                                </div>
-                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                    data-bs-parent="#accordion-one">
-                                    <div class="accordion-body-text p-0">
-                                        <div id="keyFactsId" style="padding:8px 0px 20px 0px;" class="card profile-card card-bx m-b30">
-                                            <!-- key facts-Id fields -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 4th accordion remove collapsed for highlighting-->
-                            <div style="float: left; width: 49%; margin-left: 0.5%; margin-right: 0.5%; height: auto;"
-                                class="accordion-item col col-sm-12 col-lg-6 col-md-6">
-                                <div style="padding: 0.5rem 0.75rem" class="accordion-header collapsed rounded-lg"
-                                    id="headingFour" data-bs-toggle="collapse" data-bs-target="#collapseFour"
-                                    aria-controls="collapseFour" aria-expanded="true" role="button">
-                                    <span class="accordion-header-icon"></span>
-                                    <span class="accordion-header-text">WIP - Fee Approval</span>
-                                    <span class="accordion-header-indicator"></span>
-                                </div>
-                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
-                                    data-bs-parent="#accordion-one">
-                                    <div class="accordion-body-text p-0">
-                                        <div id="WIPFeeApproval" style="padding:8px 0px 20px 0px;" class="card profile-card card-bx m-b30">
-                                            <!-- WIP - Fee Approval Fields -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="clear: both; width: 49%; margin-left: 0.5%; margin-right: 0.5%; height: auto;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="editable-dashboard">
-                    <div class="page-titles">
-                        <ol class="breadcrumb">
-                            <li><h5 class="bc-title">CLient Name</h5></li>
-                        </ol>
-                        <div>
-                            <button id="dashboard-button" class="btn btn-outline-primary btn-sm">Back</button>
-                            <button class="btn btn-outline-primary btn-sm">Save Changes</button>
-                        </div>
-                        <!-- <a class="text-primary fs-13" data-bs-toggle="offcanvas" href="#offcanvasExample1" role="button" aria-controls="offcanvasExample1">+ Add Task</a> -->
-                    </div>
-                    <div class="container-fluid">
-                        <!-- Default accordion for UDF's -->
-                        <div class="accordion accordion-primary">
-                            <!-- 1st accoradion -->
-                            <div style="float: left; width: 49%; margin-left: 0.5%; margin-right: 0.5%; height: auto;" class="accordion-item col col-sm-12 col-lg-6 col-md-6">
-                                <div style="padding: 0.5rem 0.75rem" class="accordion-header rounded-lg" id="headingOne" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-controls="collapseOne" aria-expanded="true"
-                                    role="button">
                                     <span class="accordion-header-icon"></span>
                                     <span class="accordion-header-text">Key Facts</span>
                                     <span class="accordion-header-indicator"></span>
@@ -1317,7 +1363,7 @@
                                                     Case Code
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1325,13 +1371,7 @@
                                                     Pre/Post
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <select style="border-radius: 8px;
-                                                    border-color: #cccccc;" class="form-select form-select-sm" aria-label="Small select example">
-                                                        <option selected>Please select</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                      </select>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1339,7 +1379,7 @@
                                                     Case Name
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1347,7 +1387,7 @@
                                                     Case Progress
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1355,7 +1395,7 @@
                                                     Trading as
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1363,7 +1403,7 @@
                                                     Company Number
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1371,7 +1411,7 @@
                                                     Company Address
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1379,7 +1419,7 @@
                                                     Trading Address
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1387,10 +1427,7 @@
                                                     Incorporate Date
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <div class="input-group date" id="datetimePicker2" data-target-input="nearest">
-                                                        <input type="text" class="form-control form-control-sm datetimepicker-input" style="min-height: auto;" placeholder="dd/mm/yyyy __:__"
-                                                        data-target="#datetimePicker2" data-toggle="datetimepicker"/>
-                                                    </div>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1398,10 +1435,7 @@
                                                     Ceased Trading
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <div class="input-group date" id="datetimePicker" data-target-input="nearest">
-                                                        <input type="text" class="form-control form-control-sm datetimepicker-input" style="min-height: auto;" placeholder="dd/mm/yyyy __:__"
-                                                        data-target="#datetimePicker" data-toggle="datetimepicker"/>
-                                                    </div>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1409,13 +1443,7 @@
                                                     Case Type
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <select style="border-radius: 8px;
-                                                    border-color: #cccccc;" class="form-select form-select-sm" aria-label="Small select example">
-                                                        <option selected>Please select</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                      </select>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1423,13 +1451,7 @@
                                                     Case Size
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <select style="border-radius: 8px;
-                                                    border-color: #cccccc;" class="form-select form-select-sm" aria-label="Small select example">
-                                                        <option selected>Please select</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                      </select>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1437,10 +1459,7 @@
                                                     Instructed On
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <div class="input-group date" id="datetimePicker1" data-target-input="nearest">
-                                                        <input type="text" class="form-control form-control-sm datetimepicker-input" style="min-height: auto;" placeholder="dd/mm/yyyy __:__"
-                                                        data-target="#datetimePicker1" data-toggle="datetimepicker"/>
-                                                    </div>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1448,10 +1467,7 @@
                                                     Appointed Date
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <div class="input-group date" id="datetimePicker3" data-target-input="nearest">
-                                                        <input type="text" class="form-control form-control-sm datetimepicker-input" style="min-height: auto;" placeholder="dd/mm/yyyy __:__"
-                                                        data-target="#datetimePicker3" data-toggle="datetimepicker"/>
-                                                    </div>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1459,7 +1475,7 @@
                                                     Appointed By
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1467,10 +1483,7 @@
                                                     Uploaded To Portal
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <div class="input-group date" id="datetimePicker4" data-target-input="nearest">
-                                                        <input type="text" class="form-control form-control-sm datetimepicker-input" style="min-height: auto;" placeholder="dd/mm/yyyy __:__"
-                                                        data-target="#datetimePicker4" data-toggle="datetimepicker"/>
-                                                    </div>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1478,13 +1491,7 @@
                                                     IP release date
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <div class="input-group date" id="datetimePicker5" data-target-input="nearest">
-                                                        <input type="text" class="form-control form-control-sm datetimepicker-input" style="min-height: auto;" placeholder="dd/mm/yyyy __:__"
-                                                        data-target="#datetimePicker5" data-toggle="datetimepicker"/>
-                                                        <!-- <div class="input-group-append" data-target="#datetimePicker5" data-toggle="datetimepicker">
-                                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                                        </div> -->
-                                                    </div>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1492,10 +1499,7 @@
                                                     Dissolved Date
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <div class="input-group date" id="datetimePicker6" data-target-input="nearest">
-                                                        <input type="text" class="form-control form-control-sm datetimepicker-input" style="min-height: auto;" placeholder="dd/mm/yyyy __:__"
-                                                        data-target="#datetimePicker6" data-toggle="datetimepicker"/>
-                                                    </div>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1503,10 +1507,7 @@
                                                     VAT deregistration date
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <div class="input-group date" id="datetimePicker7" data-target-input="nearest">
-                                                        <input type="text" class="form-control form-control-sm datetimepicker-input" style="min-height: auto;" placeholder="dd/mm/yyyy __:__"
-                                                        data-target="#datetimePicker7" data-toggle="datetimepicker"/>
-                                                    </div>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1514,10 +1515,7 @@
                                                     Decision date
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <div class="input-group date" id="datetimePicker8" data-target-input="nearest">
-                                                        <input type="text" class="form-control form-control-sm datetimepicker-input" style="min-height: auto;" placeholder="dd/mm/yyyy __:__"
-                                                        data-target="#datetimePicker8" data-toggle="datetimepicker"/>
-                                                    </div>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1525,7 +1523,7 @@
                                                     Bond value
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    ""
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1533,22 +1531,19 @@
                                                     Date Marked as Dead/Blocked
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <div class="input-group date" id="datetimePicker9" data-target-input="nearest">
-                                                        <input type="text" class="form-control form-control-sm datetimepicker-input" style="min-height: auto;" placeholder="dd/mm/yyyy __:__"
-                                                        data-target="#datetimePicker9" data-toggle="datetimepicker"/>
-                                                    </div>
+                                                    ""
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- 2nd accoradion -->
                             <div style="float: right; width: 49%; margin-left: 0.5%; margin-right: 0.5%; height: auto;" class="accordion-item col col-sm-12 col-lg-6 col-md-6">
-                                <div  style="padding: 0.5rem 0.75rem" class="accordion-header rounded-lg" id="headingTwo" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwo" aria-controls="collapseTwo" role="button"
-                                    aria-expanded="true">
+                                <div style="padding: 0.5rem 0.75rem" class="accordion-header rounded-lg" id="headingTwo"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-controls="collapseTwo"
+                                    role="button" aria-expanded="true">
                                     <span class="accordion-header-icon"></span>
                                     <span class="accordion-header-text">Key Facts Team</span>
                                     <span class="accordion-header-indicator"></span>
@@ -1562,15 +1557,15 @@
                                                     Lead IP Name
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
                                                 <div class="col-5 fw-bold">
-                                                    Load IP Date
+                                                    Lead IP Date
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1578,7 +1573,7 @@
                                                     Second IP Name
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1586,7 +1581,7 @@
                                                     Second IP Date
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1594,7 +1589,7 @@
                                                     Third IP Name
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1602,7 +1597,7 @@
                                                     Third IP Name
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1610,7 +1605,7 @@
                                                     Manager Name
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1618,7 +1613,7 @@
                                                     Manager Date
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1626,7 +1621,7 @@
                                                     Assistant Manager Name
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1634,7 +1629,7 @@
                                                     Assistant Manager Date
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1642,7 +1637,7 @@
                                                     Investigations manager Name
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1650,7 +1645,7 @@
                                                     Investigations manager Date
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1658,7 +1653,7 @@
                                                     Closures Manager Name
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1666,7 +1661,7 @@
                                                     Closures Manager Date
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1674,7 +1669,7 @@
                                                     Administrator 1 Name
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1682,7 +1677,7 @@
                                                     Administrator 1 Date
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1690,7 +1685,7 @@
                                                     Administrator 2 Name
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1698,7 +1693,7 @@
                                                     Administrator 2 Date
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                         </div>
@@ -1707,9 +1702,9 @@
                             </div>
                             <!-- 3rd accordion remove collapsed for highlighting-->
                             <div style="float: left; width: 49%; margin-left: 0.5%; margin-right: 0.5%; height: auto;" class="accordion-item col col-sm-12 col-lg-6 col-md-6">
-                                <div  style="padding: 0.5rem 0.75rem" class="accordion-header collapsed rounded-lg" id="headingThree" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseThree" aria-controls="collapseThree" aria-expanded="true"
-                                    role="button">
+                                <div style="padding: 0.5rem 0.75rem" class="accordion-header collapsed rounded-lg"
+                                    id="headingThree" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                    aria-controls="collapseThree" aria-expanded="true" role="button">
                                     <span class="accordion-header-icon"></span>
                                     <span class="accordion-header-text">Key Fact ID</span>
                                     <span class="accordion-header-indicator"></span>
@@ -1723,7 +1718,7 @@
                                                     VAT #
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1731,7 +1726,7 @@
                                                     PAYE #
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1739,7 +1734,7 @@
                                                     CT #
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1747,7 +1742,7 @@
                                                     CIS #
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1755,7 +1750,7 @@
                                                     RPS case ref
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1763,7 +1758,7 @@
                                                     Pension Scheme Reference Number
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                         </div>
@@ -1772,9 +1767,9 @@
                             </div>
                             <!-- 4th accordion remove collapsed for highlighting-->
                             <div style="float: right; width: 49%; margin-left: 0.5%; margin-right: 0.5%; height: auto;" class="accordion-item col col-sm-12 col-lg-6 col-md-6">
-                                <div  style="padding: 0.5rem 0.75rem" class="accordion-header collapsed rounded-lg" id="headingFour" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseFour" aria-controls="collapseFour" aria-expanded="true"
-                                    role="button">
+                                <div style="padding: 0.5rem 0.75rem" class="accordion-header collapsed rounded-lg"
+                                    id="headingFour" data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                                    aria-controls="collapseFour" aria-expanded="true" role="button">
                                     <span class="accordion-header-icon"></span>
                                     <span class="accordion-header-text">WIP - Fee Approval</span>
                                     <span class="accordion-header-indicator"></span>
@@ -1788,7 +1783,7 @@
                                                     Admin and planning/Stat reporting
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1796,7 +1791,7 @@
                                                     Assets
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1804,7 +1799,7 @@
                                                     Investigation
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1812,7 +1807,7 @@
                                                     Creditors
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1820,7 +1815,7 @@
                                                     TOTAL Time Approval
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1828,7 +1823,7 @@
                                                     Fixed Fee
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                             <div class="row px-5 pb-3">
@@ -1836,30 +1831,22 @@
                                                     Total Fee Approval
                                                 </div>
                                                 <div class="col-5 fw-bold">
-                                                    <input type="text" class="form-control form-control-sm" style="min-height: auto;"/>
+                                                    " "
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div style="clear: both;"></div>
+                            <div style="clear: both; width: 49%; margin-left: 0.5%; margin-right: 0.5%; height: auto;"></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="tab-1-page" class="">
-                <div class="page-titles">
-                    <ol class="breadcrumb">
-                        <li>
-                            <h5 class="bc-title">CLient Name</h5>
-                        </li>
-                    </ol>
-                    <div></div>
-                </div>
+            <div id="contacts" class="row tab-pane fade">
 				<div class="container-fluid">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5 class="mb-0">Contacts List</h5>
+                        <h5 class="mb-0">Contacts Summary</h5>
                         <div class="d-flex align-items-center">
                             <div class="icon-box  icon-box-sm task-tab me-2" id="showhideGrid">
                                 <a>
@@ -1871,76 +1858,115 @@
                                     </svg>
                                 </a>
                             </div>
-                            <a href="javascript:void(0)" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal" style="display: none;">+ Add Task</a>
+                            <!-- <a href="javascript:void(0)" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">+ Add Task</a> -->
                         </div>
                     </div>
-					<div class="row">
-						<div class="col-xl-12">
+					<div>
+						<div>
 							<div class="card kanbanPreview-bx" style="border: unset;">
 								<div class="card-body p-0 draggable-zone dropzoneContainer" tabindex="0">
-                                   <div class="containerdata" style="    display: flex;
-                                   justify-content: space-between">
-                                    <div class="sub-card border-primary">
-                                        <div class="sub-card-2">
-                                            <div>
-                                                <h5 class="mb-0">Not Started</h5>
-                                                <span>Tasks assigned to me: 18</span>
+                                   <div class="containerdata">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="sub-card border-primary">
+                                                <div class="sub-card-2">
+                                                    <div>
+                                                        <h5 class="mb-0">Creators</h5>
+                                                        <span>Tasks assigned to me: 18</span>
+                                                    </div>
+                                                    <div class="icon-box bg-primary-light rounded-circle">
+                                                        <h5 class="text-primary totalCount">3</h5>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="icon-box bg-primary-light rounded-circle">
-                                                <h5 class="text-primary totalCount">3</h5>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="sub-card border-purple">
+                                                <div class="sub-card-2">
+                                                    <div>
+                                                        <h5 class="mb-0">Directors</h5>
+                                                        <span>Tasks assigned to me: 18</span>
+                                                    </div>
+                                                    <div class="icon-box bg-purple-light rounded-circle">
+                                                        <h5 class="text-purple totalCount">3</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="sub-card border-warning">
+                                                <div class="sub-card-2">
+                                                    <div>
+                                                        <h5 class="mb-0">Employees</h5>
+                                                        <span>Tasks assigned to me: 18</span>
+                                                    </div>
+                                                    <div class="icon-box bg-warning-light rounded-circle">
+                                                        <h5 class="text-warning totalCount">3</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="sub-card border-danger">
+                                                <div class="sub-card-2">
+                                                    <div>
+                                                        <h5 class="mb-0">Shareholders</h5>
+                                                        <span>Tasks assigned to me: 18</span>
+                                                    </div>
+                                                    <div class="icon-box bg-warning-light rounded-circle">
+                                                        <h5 class="text-warning totalCount">3</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="sub-card border-success">
+                                                <div class="sub-card-2">
+                                                    <div>
+                                                        <h5 class="mb-0">General</h5>
+                                                        <span>Tasks assigned to me: 21</span>
+                                                    </div>
+                                                    <div class="icon-box bg-success-light rounded-circle">
+                                                        <h5 class="text-success totalCount">3</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="sub-card border-success">
+                                                <div class="sub-card-2">
+                                                    <div>
+                                                        <h5 class="mb-0">Debtors</h5>
+                                                        <span>Tasks assigned to me: 21</span>
+                                                    </div>
+                                                    <div class="icon-box bg-success-light rounded-circle">
+                                                        <h5 class="text-success totalCount">3</h5>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="sub-card border-purple">
-                                        <div class="sub-card-2">
-                                            <div>
-                                                <h5 class="mb-0">Not Started</h5>
-                                                <span>Tasks assigned to me: 18</span>
-                                            </div>
-                                            <div class="icon-box bg-purple-light rounded-circle">
-                                                <h5 class="text-purple totalCount">3</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sub-card border-warning">
-                                        <div class="sub-card-2">
-                                            <div>
-                                                <h5 class="mb-0">Not Started</h5>
-                                                <span>Tasks assigned to me: 18</span>
-                                            </div>
-                                            <div class="icon-box bg-warning-light rounded-circle">
-                                                <h5 class="text-warning totalCount">3</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sub-card border-danger">
-                                        <div class="sub-card-2">
-                                            <div>
-                                                <h5 class="mb-0">Not Started</h5>
-                                                <span>Tasks assigned to me: 18</span>
-                                            </div>
-                                            <div class="icon-box bg-warning-light rounded-circle">
-                                                <h5 class="text-warning totalCount">3</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sub-card border-success">
-                                        <div class="sub-card-2">
-                                            <div>
-                                                <h5 class="mb-0">Complete</h5>
-                                                <span>Tasks assigned to me: 21</span>
-                                            </div>
-                                            <div class="icon-box bg-success-light rounded-circle">
-                                                <h5 class="text-success totalCount">3</h5>
-                                            </div>
-                                        </div>
-                                    </div>
+
+                                    
+                                    
+                                    
+                                    
+                                   
                                    </div>
 									<div class="table-responsive active-projects task-table">
 										
 										<div id="dxDataGridAllContacts11" class=""></div>
 										
 									</div>
+									<!-- <div class="container-fluid">
+										<div class="row kanban-bx">
+											<div id="dxDataGridAllContacts_data" style="display: none;"></div>
+										</div>
+										
+									</div> -->
+		
+									
+									
 								</div>
 							</div>
 						</div>
@@ -1948,187 +1974,139 @@
 				</div>
 			
             </div>
-            <div id="tab-2-page" class=""> 
+            <div id="documents" class="tab-pane fade"> 
+                
+                    <!-- row -->
+                    <!-- <div class="page-titles tab-pane">
+                        <ol class="breadcrumb">
+                            <li>
+                                <h5 class="bc-title">Documents</h5>
+                            </li>
+                        </ol>
+                    </div> -->
+                   <div class="container-fluid">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">Charts of Accounts Summary</h5>
+                        <div class="d-flex align-items-center">
+                            <div class="icon-box  icon-box-sm task-tab me-2" id="">
+                                <a>
+                                    <svg width="20" height="20" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8.50032 3H2.66699V8.83333H8.50032V3Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M17.6668 3H11.8335V8.83333H17.6668V3Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M17.6668 12.1667H11.8335V18H17.6668V12.1667Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M8.50032 12.1667H2.66699V18H8.50032V12.1667Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                            <!-- <a href="javascript:void(0)" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">+Task</a> -->
+                        </div>
+                    </div>
+                    <div class="row">
+						<div class="col-xl-12">
+							<div class="card">
+								<div class="card-body p-0">
+									<div class="table-responsive active-projects task-table">
+										
+										<div id="dxDataGridAllTasks" class=""></div>
+										
+									</div>
+									<!-- <div class="container-fluid">
+										<div class="row kanban-bx">
+											<div id="dxDataGridAllContacts_data" style="display: none;"></div>
+										</div>
+										
+									</div> -->
+		
+									
+									
+								</div>
+							</div>
+						</div>
+					</div>
+                  
+                </div>
+            </div>
+            <div id="requestedDocuments" class="tab-pane fade">
+                <div>
+                    <!-- row -->
                     <div class="page-titles tab-pane">
                         <ol class="breadcrumb">
                             <li>
-                                <h5 class="bc-title">Assignment Details</h5>
+                                <h5 class="bc-title">Requested Documents</h5>
                             </li>
                         </ol>
                     </div>
-                    <!-- row -->
-                   
             </div>
-            <div id="tab-3-page" class="">
-                    <!-- row -->
-                    <!-- <div class="page-titles tab-pane">
-                        <ol class="breadcrumb">
-                            <li>
-                                <h5 class="bc-title">Client Name</h5>
-                            </li>
-                        </ol>
-                    </div> -->
-                    <div class="container-fluid">
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h5 class="mb-0">Meetings and Tasks</h5>
-                            <div class="d-flex align-items-center">
-                                <div class="icon-box  icon-box-sm task-tab me-2" id="">
-                                    <a>
-                                        <svg width="20" height="20" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M8.50032 3H2.66699V8.83333H8.50032V3Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                            <path d="M17.6668 3H11.8335V8.83333H17.6668V3Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                            <path d="M17.6668 12.1667H11.8335V18H17.6668V12.1667Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                            <path d="M8.50032 12.1667H2.66699V18H8.50032V12.1667Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        </svg>
-                                    </a>
-                                </div>
-                                <a href="javascript:void(0)" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">General Process Task <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                                <div class="dropdown">
-                                    <a href="javascript:void(0)" class="btn btn-primary btn-sm ms-2 dropdown-toggle"  data-bs-toggle="dropdown" data-bs-target="#exampleModal" style="">New Task</a>
-                                    <ul class="dropdown-menu">
-                                        <li style="margin-left: 10px;" id="CreateNewTask">CRM</li>
-                                        <li style="margin-left: 10px;"><a href="WPSViewer.html" target="_blank">WPS</a></li>
-                                    </ul>
-                                </div>
-                               
-                                <a href="javascript:void(0)" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">Mark Complete <i class="fa fa-check-circle" aria-hidden="true"></i></a>
-                                <a href="javascript:void(0)" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">Delete <i class="fa fa-trash" aria-hidden="true"></i></a>
-                                <a href="javascript:void(0)" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">Launch <i class="fa fa-paper-plane" aria-hidden="true"></i></a>
-                                <a href="javascript:void(0)" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">Refresh <i class="fa fa-refresh" aria-hidden="true"></i></a>
+            </div>
+            <div id="address" class="tab-pane fade">
+                <!-- row -->
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">Tasks Summary</h5>
+                        <div class="d-flex align-items-center">
+                            <div class="icon-box  icon-box-sm task-tab me-2" id="">
+                                <a>
+                                    <svg width="20" height="20" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8.50032 3H2.66699V8.83333H8.50032V3Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M17.6668 3H11.8335V8.83333H17.6668V3Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M17.6668 12.1667H11.8335V18H17.6668V12.1667Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M8.50032 12.1667H2.66699V18H8.50032V12.1667Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </a>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="card">
-                                    <div class="card-body p-0">
-                                        <div class="table-responsive active-projects task-table">
-                                            
-                                            <div id="TaskTableData1" class=""></div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
+                            <a href="javascript:void(0)" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">General Process Task <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                            <div class="dropdown">
+                                <a href="javascript:void(0)" class="btn btn-primary btn-sm ms-2 dropdown-toggle"  data-bs-toggle="dropdown" data-bs-target="#exampleModal" style="">New Task</a>
+                                <ul class="dropdown-menu">
+                                    <li style="margin-left: 10px;"><a href="/account/newtask.html" target="_blank">CRM</a></li>
+                                    <li style="margin-left: 10px;"><a href="WPSViewer.html" target="_blank">WPS</a></li>
+                                </ul>
                             </div>
+                           
+                            <a href="javascript:void(0)" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">Mark Complete <i class="fa fa-check-circle" aria-hidden="true"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">Delete <i class="fa fa-trash" aria-hidden="true"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">Launch <i class="fa fa-paper-plane" aria-hidden="true"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">Refresh <i class="fa fa-refresh" aria-hidden="true"></i></a>
                         </div>
-                      
                     </div>
-            </div>
-            <div id="tab-4-page" class="">
-                <div class="page-titles tab-pane">
-                    <ol class="breadcrumb">
-                        <li>
-                            <h5 class="bc-title">Documents</h5>
-                        </li>
-                    </ol>
-                </div>
-                <!-- row -->
-            </div>
-            <div id="tab-5-page" class="">
-                    <!-- row -->
-                    <!-- <div class="page-titles tab-pane">
-                        <ol class="breadcrumb">
-                            <li>
-                                <h5 class="bc-title">Client Name</h5>
-                            </li>
-                        </ol>
-                    </div> -->
-                    <div class="container-fluid">
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h5 class="mb-0">Charts of Accounts</h5>
-                            <div class="d-flex align-items-center">
-                                <div class="icon-box  icon-box-sm task-tab me-2" id="showhideGrid">
-                                    <a>
-                                        <svg width="20" height="20" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M8.50032 3H2.66699V8.83333H8.50032V3Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                            <path d="M17.6668 3H11.8335V8.83333H17.6668V3Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                            <path d="M17.6668 12.1667H11.8335V18H17.6668V12.1667Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                            <path d="M8.50032 12.1667H2.66699V18H8.50032V12.1667Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        </svg>
-                                    </a>
-                                </div>
-                                <a href="javascript:void(0)" class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal" style="display: none;">+ Add Task</a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="card">
-                                    <div class="card-body p-0">
-                                        <div class="table-responsive active-projects task-table">
-                                            
-                                            <div id="dxDataGridAllTasks" class=""></div>
-                                            
-                                        </div>
-                                        <!-- <div class="container-fluid">
-                                            <div class="row kanban-bx">
-                                                <div id="dxDataGridAllContacts_data" style="display: none;"></div>
-                                            </div>
-                                            
-                                        </div> -->
-            
-                                        
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                      
-                    </div>
-            </div>
-            <div id="tab-6-page" class="">
-                <!-- row -->
-                <div class="page-titles tab-pane">
-                    <ol class="breadcrumb">
-                        <li>
-                            <h5 class="bc-title">Assets Group</h5>
-                        </li>
-                    </ol>
+                    <div class="row">
+						<div class="col-xl-12">
+							<div class="card">
+								<div class="card-body p-0">
+									<div class="table-responsive active-projects task-table">
+										
+										<div id="TaskTableData1" class=""></div>
+										
+									</div>
+									<!-- <div class="container-fluid">
+										<div class="row kanban-bx">
+											<div id="dxDataGridAllContacts_data" style="display: none;"></div>
+										</div>
+										
+									</div> -->
+		
+									
+									
+								</div>
+							</div>
+						</div>
+					</div>
+                  
                 </div>
             </div>
-            <div id="tab-7-page" class="">
-                <!-- row -->
-                <div class="page-titles tab-pane">
-                    <ol class="breadcrumb">
-                        <li>
-                            <h5 class="bc-title">Monthly Income/Expenditure</h5>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-            <div id="tab-8-page" class="">
-                <!-- row -->
-                <div class="page-titles tab-pane">
-                    <ol class="breadcrumb">
-                        <li>
-                            <h5 class="bc-title">Income Contributions</h5>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-            <div id="tab-9-page" class="">
-                <!-- row -->
-                <div class="page-titles tab-pane">
-                    <ol class="breadcrumb">
-                        <li>
-                            <h5 class="bc-title">Pre appointment details</h5>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-            <div id="tab-10-page" class="">
-                <!-- row -->
-                <div class="page-titles tab-pane">
-                    <ol class="breadcrumb">
-                        <li>
-                            <h5 class="bc-title">Postal Resolutions</h5>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-            <div id="edit-client" style="display: none;" class="">
+            <div id="edit-client" class="tab-pane fade">
                 <!-- row -->	
 			<div class="page-titles">
 				<ol class="breadcrumb">
 					<li><h5 class="bc-title">CLient Name</h5></li>
+					<!-- <li class="breadcrumb-item"><a href="javascript:void(0)"> -->
+						<!-- <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M2.125 6.375L8.5 1.41667L14.875 6.375V14.1667C14.875 14.5424 14.7257 14.9027 14.4601 15.1684C14.1944 15.4341 13.8341 15.5833 13.4583 15.5833H3.54167C3.16594 15.5833 2.80561 15.4341 2.53993 15.1684C2.27426 14.9027 2.125 14.5424 2.125 14.1667V6.375Z" stroke="#2C2C2C" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M6.375 15.5833V8.5H10.625V15.5833" stroke="#2C2C2C" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+						Add Notes </a> -->
+					<!-- </li> -->
+					<!-- <li class="breadcrumb-item active"><a href="javascript:void(0)">Dashboard</a></li> -->
 				</ol>
                 <div>
                     <a id="dashboard-button" href="#dashboard" data-bs-toggle="pill"  class="btn btn-outline-primary btn-sm">Back</a>
@@ -2687,6 +2665,13 @@
 				</div>
 			</div>
             </div>
+            <div id="v-pills-settings" class="tab-pane fade">
+                <p>Eu dolore ea ullamco dolore Lorem id cupidatat excepteur reprehenderit consectetur elit id dolor
+                    proident in cupidatat officia. Voluptate excepteur commodo labore nisi cillum duis aliqua do. Aliqua
+                    amet
+                    qui mollit consectetur nulla mollit velit aliqua veniam nisi id do Lorem deserunt amet. Culpa
+                    ullamco sit adipisicing labore officia magna elit nisi in aute tempor commodo eiusmod.</p>
+            </div>
 
         <!--**********************************
             Content body end
@@ -2897,433 +2882,6 @@
 				</div>
 			</div>
 		</div>
-        <!--New CRM Task form-->
-        <div class="modal fade " id="CreateNewTask_modal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false">
-            <div class="modal-dialog modal-dialog-centered modal-custom">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Create New CRM Task </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card">
-
-                            <div class="card-body">
-                                <div class="basic-form">
-
-                                    <div class="row">
-                                        <div class="col-xl-8">
-                                            <div class="filter cm-content-box box-primary">
-                                               
-                                                <div class="content-title flex-wrap">
-                                                    <div class="cpa align-items-center " style="width: 100%; max-width: 100%; overflow: auto;">
-                                                        
-                                                        <h6 class="mb-0">Subject</h6>
-                                                        <!-- <input type="text" class="form-control  " placeholder="Subject" style="width:390%;"> -->
-                                                        <div id="editor" >
-                                                        
-                                                        </div>
-                                                        <button class="btn btn-success mt-4" id="editorBtn" type="button">Enable Editing</button>
-                                                        
-                                                    </div>
-                                                    <!-- <button type="button" class="btn btn-secondary light ms-sm-auto mb-2 mb-sm-0">Save Menu</button> -->
-                                                </div>
-                                                <div class="cm-content-body form excerpt rounded-0">
-                                                    <div class="card-body">
-                                                       
-                                                        <div class="col-xl-7">
-                                                            <div class="dd" id="nestable">
-                                                                <ol class="dd-list">
-                                                                    <li class="dd-item menu-ac-item" data-id="1">
-                                                                        <!-- <div class="dd-handle"></div> -->
-                                                                        <div class="accordion" id="accordionExample-1">
-                                                                            <div class="accordion-item" style="width: 165%;">
-                                                                                <div class="accordion-header p-0" id="heading-1">
-                                                                                    <div class="move-media dd-handle">
-                                                                                        <i class="fa-solid fa-arrows-up-down-left-right"></i>
-                                                                                    </div>
-                                                                                  <button class="accordion-button contact" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
-                                                                                    Details
-                                                                                  </button>
-                                                                                </div>
-                                                                                <div id="collapse-1" class="accordion-collapse collapse" aria-labelledby="heading-1" data-bs-parent="#accordionExample-1">
-                                                                                    <div class="accordion-body">
-                                                                                        <textarea rows="3" name="changes in Details" id="Task_DetailsText" class="floating-select form-control fullheight commanClass"></textarea>
-                             											
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                   
-                                                                    <li class="dd-item menu-ac-item" data-id="3">
-                                                                        <div class="accordion" id="accordionExample-3">
-                                                                            <div class="accordion-item" style="width: 165%;">
-                                                                                <div class="accordion-header p-0" id="heading-3">
-                                                                                    <div class="move-media dd-handle">
-                                                                                        <i class="fa-solid fa-arrows-up-down-left-right"></i>
-                                                                                    </div>
-                                                                                  <button class="accordion-button contact" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="true" aria-controls="collapse-3">
-                                                                                    Attachments
-                                                                                  </button>
-                                                                                </div>
-                                                                                <div id="collapse-3" class="accordion-collapse collapse" aria-labelledby="heading-3" data-bs-parent="#accordionExample-3">
-                                                                                    <div class="accordion-body">
-                                                                                        <div class="row mb-2" id="ShowAddAttachment">
-                                                                                            <form class="uploadfile">
-                                                                                                <div class="">
-                                                                                                    <input name="changes in Uploadfile" id="UploadFile" class="commanClass" multiple type="file" name="file" accept="image/jpeg, image/x-citrix-jpeg, application/pdf, text/plain, image/png, image/x-citrix-png, image/x-png, text/plain, message/rfc822, image/tiff, video/jpeg, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/msword, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/zip, video/mp4, application/mp4, audio/mp4" />
-                                                                                                    <p>Drag and Drop your file here or click in this area.</p>
-                                                                                                </div>
-                                                                                            </form>
-                                                                                        </div>
-                                                                                        <div class="row">
-                                                                                            <ul class="themeicon" id="TaskAttechment"></ul>
-                                                                                        </div>
-                                                                                                    
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li class="dd-item menu-ac-item" data-id="4">
-                                                                        <div class="accordion" id="accordionExample-4">
-                                                                            <div class="accordion-item" style="width: 165%;">
-                                                                                <div class="accordion-header p-0" id="heading-4">
-                                                                                    <div class="move-media dd-handle">
-                                                                                        <i class="fa-solid fa-arrows-up-down-left-right"></i>
-                                                                                    </div>
-                                                                                  <button class="accordion-button contact" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-4" aria-expanded="true" aria-controls="collapse-4">
-                                                                                    Notes
-                                                                                  </button>
-                                                                                </div>
-                                                                                <div id="collapse-4" class="accordion-collapse collapse" aria-labelledby="heading-4" data-bs-parent="#accordionExample-4">
-                                                                                    <div class="accordion-body">
-                                                                                        <div class="html-editor commanClass" id="changesineditor" name="changes in notes">
-                                                                                        </div>												
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <!-- <li class="dd-item menu-ac-item" data-id="5">
-                                                                        <div class="accordion" id="accordionExample-5">
-                                                                            <div class="accordion-item" style="width: 165%;">
-                                                                                <div class="accordion-header p-0" id="heading-5">
-                                                                                    <div class="move-media dd-handle">
-                                                                                        <i class="fa-solid fa-arrows-up-down-left-right"></i>
-                                                                                    </div>
-                                                                                  <button class="accordion-button contact" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-5" aria-expanded="true" aria-controls="collapse-5">
-                                                                                    Documents
-                                                                                  </button>
-                                                                                </div>
-                                                                                <div id="collapse-5" class="accordion-collapse collapse" aria-labelledby="heading-5" data-bs-parent="#accordionExample-5">
-                                                                                    <div class="accordion-body">
-                                                                                        <div class="row">
-                                                                                            <div class="col-xl-6">
-                                                                                                <form>
-                                                                                                  <div class="mb-3">
-                                                                                                    <label  class="form-label">Navigation Label</label>
-                                                                                                    <input type="text" class="form-control" placeholder="Important Information">
-                                                                                                  </div>
-                                                                                                </form>
-                                                                                            </div>
-                                                                                            <div class="col-xl-6">
-                                                                                                <form>
-                                                                                                  <div class="mb-3">
-                                                                                                    <label  class="form-label">Title Attribute</label>
-                                                                                                    <input type="text" class="form-control" placeholder="">
-                                                                                                  </div>
-                                                                                                </form>
-                                                                                            </div>
-                                                                                            <div class="col-xl-12">
-                                                                                                <p class="dz-terms">Original: <a href="javascript:void(0);">Terms and Conditions</a></p>
-                                                                                            </div>
-                                                                                            <div class="d-flex align-items-center">
-                                                                                                <a href="javascript:void(0);">Remove</a><span class="mx-2">|</span>
-                                                                                                <a href="javascript:void(0);"  type="button" data-bs-toggle="collapse" data-bs-target="#collapse-5" aria-expanded="false" aria-controls="collapse-5">
-                                                                                                Cancel
-                                                                                              </a>
-                                                                                            </div>
-                                                                                        </div>												
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li> -->
-                                                                </ol>
-                                                            </div>
-                                                        </div>
-                                                    </div>		
-                                                </div>
-                                                <!-- <div class="filter cm-content-box box-primary style-1 mb-0 border-0">
-                                                    <div class="content-title">
-                                                        <div class="cpa">
-                                                            Delete Menu
-                                                        </div>
-                                                        <button type="button" class="btn btn-secondary light my-2">Save Menu</button>
-                                                    </div>
-                                                </div> -->
-                                                
-                                              
-                                                </div>
-                                        </div>
-                                        <div class="col-xl-4">
-                                            <div class="filter cm-content-box box-primary">
-                                               <div class="row">
-                                                <div class="widget-stat card mb-0" style="        background: rgb(177 189 199 / 10%);
-    border-color: rgb(177 189 199 / 10%);">
-                                                    <div class="card-body p-4">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <h6 class="mb-0">Folder</h6>
-                                                                <select name="changes in folder" class="form-control selectFolder commanClass" isOwner="true" id="Task_Folder" ></select>
-             
-                                                            </div>
-                                                            
-                                                           
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <h6 class="mb-0">Reference</h6>
-                
-                                                                <!-- <label for="task_quoted" id="commanClass_label">Folder</label> -->
-                                                                <select name="changes in reference" class="form-control selectClient commanClass" isOwner="true" id="Task_AssociateWithClient"></select>
-                                                               
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <h6 class="mb-0">Section</h6>
-                
-                        <!-- <label for="task_quoted" id="commanClass_label">Folder</label> -->
-                        <select name="changes in section"class="form-control selectSection commanClass" isOwner="true" id="Task_Section"></select>
-                         
-                                                            </div>
-                                                        </div>
-                                                        <!-- <div class="media ai-icon">
-                                                            
-                                                            <div class="media-body">
-                                                                <p class="mb-1">Patient</p>
-                                                                <h4 class="mb-0">3280</h4>
-                                                                <span class="badge badge-primary">+3.5%</span>
-                                                            </div>
-                                                        </div> -->
-                                                    </div>
-                                                </div>
-                                               </div>
-                                               <div class="row">
-                                                <div class="widget-stat card mb-0" style="        background: rgb(177 189 199 / 10%);
-    border-color: rgb(177 189 199 / 10%);
-                                                border-color: var(--rgba-primary-1);">
-                                                    <div class="card-body p-4">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <h6 class="mb-0">Status </h6>
-                                                                <select name="changes in status" class="form-control selectStatus commanClass" id="Task_Status"></select>     </div>
-                                                                <div class="col">
-                                                                    <h6 class="mb-0">Priority </h6>
-                    
-                            <!-- <label for="task_quoted" id="commanClass_label">Folder</label> -->
-                            <select name="changes in priority" class="form-control selectPriority commanClass " isOwner="true" id="Task_Priority"></select>
-                        </div>
-                                                            
-                                                           
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <h6 class="mb-0">Complete %</h6>
-                
-                                                                <!-- <label for="task_quoted" id="commanClass_label">Folder</label> -->
-                                                                <input type="range" min="1" max="100" value="0" name="changes in complete percentage" class="slider commanClass percentage" id="Task_Complete" style="width: 100%;">
-
-                                      
-                                                            </div>
-                                                        </div>
-                                                       
-                                                        <!-- <div class="media ai-icon">
-                                                            
-                                                            <div class="media-body">
-                                                                <p class="mb-1">Patient</p>
-                                                                <h4 class="mb-0">3280</h4>
-                                                                <span class="badge badge-primary">+3.5%</span>
-                                                            </div>
-                                                        </div> -->
-                                                    </div>
-                                                </div>
-                                               </div>
-
-                                              
-                                               <div class="row">
-                                                <div class="widget-stat card mb-0" style="        background: rgb(177 189 199 / 10%);
-    border-color: rgb(177 189 199 / 10%);">
-                                                    <div class="card-body p-4">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <h6 class="mb-0">Start Date</h6>
-                                                                <input name="changes in Task Start Date" type="date" id="Task_StartTime"  isOwner="true" class="floating-select TableMode form-control commanClass">
-
-                                             </div>
-                                             <div class="col">
-                                                <h6 class="mb-0">Due Date
-                                                </h6>
-                                                <input name="changes in Task End Date" type="date" id="Task_EndTime" isOwner="true" class="floating-select TableMode form-control commanClass">
-
-                                            </div> 
-                                                           
-                                                        </div>
-                                                       
-                                                       
-                                                    </div>
-                                                </div>
-                                               </div>
-                                              
-                                               <div class="row">
-                                                <div class="widget-stat card mb-0" style="        background: rgb(177 189 199 / 10%);
-                                                border-color: rgb(177 189 199 / 10%);">
-                                                    <div class="card-body p-4">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <h6 class="mb-0">Owner</h6>
-                                                                <select name="changes in Owner" class="form-control selectUser commanClass"  isOwner="true" id="Task_Owner"></select>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div class="container">
-                                                                    <div class="row">
-                                                                       
-                                                                        <div id="assingeanddragdrop">
-                                                                            <div class="row rightSidePannel" style="    background-color: var(--primary) !important;
-                                                                            ">
-                                                                                <div class="col">
-                                                                                    <div class="btn-group" role="group">
-                                                                                        <button type="button" class="btn btn-primary dropdown-toggle" id="append-content-button" style=""> Add Assignee </button>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col">
-                                                                                    <div class="avatar-list avatar-list-stacked my-2 table-responsive" id="dynamicContainer" style="display:flex;width:400px">
-                                                                
-                                                                                    </div> 
-                                                                                </div>
-                                                                            </div>
-                                                                            
-                                                                            
-                                                                            </div>
-                                                                    </div>
-                                                                    <div id="target-div" class="row" style="display:none">
-                    
-                                                                        <!-- <div class="col-xl-6  col-lg-6">
-                                                                            <div class="card-header">
-                                                                                <h4 class="card-title">Contact Available</h4>
-                                                                            </div>
-                                                                            <div class="card-body">
-                                                                                <div class="widget-media dz-scroll height370  px-4">
-                                                                                    <div id="contactlist_data"></div>
-                                
-                                                                                </div>
-                                                                            </div>
-                                                                        </div> -->
-                                                                        <div class="col-xl-12">
-                                                                            <div class="card-header">
-                                                                                <h4 class="card-title">User Available </h4>
-                                                                            </div>
-                                                                            <div class="card-body">
-                                                                                <div class="widget-media dz-scroll height370  px-4">
-                                                                                    <div id="activeuserlist_data"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                
-                                
-                                                                    </div>
-                                                                   </div> 
-                                                            </div>
-                                                        </div>
-                                                       
-                                                    </div>
-                                                </div>
-                                               </div>
-                                             
-                                            
-                                                </div>
-                                               
-                                                <!-- <div class="card">
-                                                    <div class="card-header border-0 pb-0">
-                                                        <h4 class="card-title">Timeline 2</h4>
-                                                    </div>
-                                                    <div class="card-body p-0">
-                                                        <div id="DZ_W_TimeLine11" class="widget-timeline dz-scroll style-1 height370 my-4 px-4">
-                                                            <ul class="timeline">
-                                                                <li>
-                                                                    <div class="timeline-badge primary"></div>
-                                                                    <a class="timeline-panel" href="#">
-                                                                        <span>10 minutes ago</span>
-                                                                        <h6 class="mb-0">Youtube, a video-sharing website, goes live <strong class="text-primary">$500</strong>.</h6>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="timeline-badge info">
-                                                                    </div>
-                                                                    <a class="timeline-panel" href="#">
-                                                                        <span>20 minutes ago</span>
-                                                                        <h6 class="mb-0">New order placed <strong class="text-info">#XF-2356.</strong></h6>
-                                                                        <p class="mb-0">Quisque a consequat ante Sit amet magna at volutapt...</p>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="timeline-badge danger">
-                                                                    </div>
-                                                                    <a class="timeline-panel" href="#">
-                                                                        <span>30 minutes ago</span>
-                                                                        <h6 class="mb-0">john just buy your product <strong class="text-warning">Sell $250</strong></h6>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="timeline-badge success">
-                                                                    </div>
-                                                                    <a class="timeline-panel " href="#">
-                                                                        <span>15 minutes ago</span>
-                                                                        <h6 class="mb-0">StumbleUpon is acquired by eBay. </h6>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="timeline-badge warning">
-                                                                    </div>
-                                                                    <a class="timeline-panel " href="#">
-                                                                        <span>20 minutes ago</span>
-                                                                        <h6 class="mb-0">Mashable, a news website and blog, goes live.</h6>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="timeline-badge dark">
-                                                                    </div>
-                                                                    <a class="timeline-panel " href="#">
-                                                                        <span>20 minutes ago</span>
-                                                                        <h6 class="mb-0">Mashable, a news website and blog, goes live.</h6>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
-                                            </div>
-                                        
-                                        </div>
-                                    </div>
-                                       	
-        
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="modal-footer">
-                        <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary createNewRequest">Save changes</button>
-                    </div> -->
-                </div>
-            </div>
-        </div>
-
         <!--**********************************
             Footer start
         ***********************************-->
@@ -3357,8 +2915,8 @@
     <script src="vendor/global/global.min.js"></script>
     <script src="vendor/chart.js/Chart.bundle.min.js"></script>
     <script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-    <!-- <script src="vendor/apexchart/apexchart.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script src="vendor/apexchart/apexchart.js"></script>
+
     <!-- Dashboard 1 -->
     <script src="js/dashboard/dashboard-1.js"></script>
     <script src="vendor/draggable/draggable.js"></script>
@@ -3380,9 +2938,9 @@
 
 
     <!-- Vectormap -->
-    <!-- <script src="vendor/jqvmap/js/jquery.vmap.min.js"></script>
+    <script src="vendor/jqvmap/js/jquery.vmap.min.js"></script>
     <script src="vendor/jqvmap/js/jquery.vmap.world.js"></script>
-    <script src="vendor/jqvmap/js/jquery.vmap.usa.js"></script> -->
+    <script src="vendor/jqvmap/js/jquery.vmap.usa.js"></script>
     <script src="js/custom.js"></script>
     <script src="js/deznav-init.js"></script>
     <script src="js/demo.js"></script>
@@ -3419,138 +2977,129 @@
     <script>
         $(document).ready(function () {
 
-            $(".selectClient").select2({
-               // dropdownParent: $('#TaskModal'),
-                templateResult: selectClient
-            });
-            function selectClient(state) {
-                //alert(state.id);
-                if (!state.id) {
-                    return state.text;
-                }
-                var $state = $(
-                    '<span > <i class="fa fa-user" aria-hidden="true"></i> ' + state.text + '</span>'
-                );
-                return $state;
-            }
-
-            $(".selectFolder").select2({
-               // dropdownParent: $('#TaskModal'),selectSection selectFolder
-                templateResult: selectFolder
-            });
-            function selectFolder(state) {
-                //alert(state.id);
-                if (!state.id) {
-                    return state.text;
-                }
-                var $state = $(
-                    '<span > <i class="fa fa-folder"></i> ' + state.text + '</span>'
-                );
-                return $state;
-            }
-            $(".selectSection").select2({
-               // dropdownParent: $('#TaskModal'),
-                templateResult: selectSection
-            });
-            function selectSection(state) {
-                //alert(state.id);
-                if (!state.id) {
-                    return state.text;
-                }
-                var $state = $(
-                    '<span > <i class="fa fa-pie-chart" aria-hidden="true"></i>' + state.text + '</span>'
-                );
-                return $state;
-            }
-            $(".selectUser").select2({
-               // dropdownParent: $('#TaskModal'),
-                templateResult: selectUser
-            });
-            function selectUser(state) {
-                //alert(state.id);
-                if (!state.id) {
-                    return state.text;
-                }
-                var $state = $(
-                    '<span > <i class="fa fa-user" aria-hidden="true"></i> ' + state.text + '</span>'
-                );
-                return $state;
-            }
-
-            $(".selectStatus").select2({
-             //   dropdownParent: $('#TaskModal'),
-                templateResult: selectStatus
+            $('#datetimePicker').datetimepicker({
+                format: 'DD/MM/YYYY hh:mm A',
+                // minDate: moment().subtract(1, 'years'),  // Set the minimum allowed date (e.g., one year ago)
+                // maxDate: moment().add(1, 'years'),  // Set the desired date format
             });
 
-            function selectStatus(state) {
-                //alert(state.id);
-                if (!state.id) {
-                    return state.text;
-                }
-                var IConeStr = '';
-                switch (state.text) {
-                    case "Not Started":
-                        IConeStr = '<i class="fa fa-ban mr-1" aria-hidden="true"></i>';
-                        break;
-                    case "In Progress":
-                        IConeStr = '<i class="fa fa-signal mr-1" aria-hidden="true"  ></i>';
-                        break;
-                    case "Completed":
-                        IConeStr = '<i class="fa fa-check-circle mr-1" aria-hidden="true" ></i>';
-                        break;
-                    case "Waiting on someone else":
-                    case "Deferred":
-                        IConeStr = '<i class="fa fa-exclamation-circle mr-1" aria-hidden="true"  "></i>';
-                        break;
-						case "Done":
-                        IConeStr = '<i class="fa fa-check-circle mr-1" aria-hidden="true"  "></i>';
-                        break;
-                }
-
-                var $state = $(
-
-
-                    '<span >  ' + IConeStr + state.text + '</span>'
-                );
-                return $state;
-            }
-
-            $(".selectPriority").select2({
-               
-                templateResult: selectPriority
+            for (let i = 1; i <= 9; i++) {
+                $(`#datetimePicker${i}`).datetimepicker({
+                format: 'DD/MM/YYYY hh:mm A',
             });
-
-
-            function selectPriority(state) {
-                //alert(state.id);
-                if (!state.id) {
-                    return state.text;
-                }
-                var IConeStr = '';
-                switch (state.text) {
-                    case "Low":
-                        IConeStr = '<i class="fa fa-arrow-down mr-1" aria-hidden="true"></i>';
-                        break;
-                    case "High":
-                        IConeStr = '<i class="fa fa-exclamation mr-1" aria-hidden="true"  ></i>';
-                        break;
-                    case "Normal":
-                        IConeStr = '<i class="fa fa-minus-square mr-1" aria-hidden="true"></i>';
-                        break;
-
-                }
-
-                var $state = $(
-
-
-                    '<span >  ' + IConeStr + state.text + '</span>'
-                );
-                return $state;
             }
 
 
-         });
+
+            $("#dashboard-tab").click(function () {
+                $("#dashboard").addClass("active show");
+                $("#documents").removeClass("active show");
+                $("#contacts").removeClass("active show");
+                $("#address").removeClass("active show");
+                $("#requestedDocuments").removeClass("active show");
+                $("#edit-client").removeClass("active show");
+
+                //for tabs
+                $("#dashboard-tab").addClass("mm-active");
+                $("#dashboard-tab").parent().addClass("mm-active");
+
+                $("#contacts-tab").removeClass("mm-active");
+                $("#contacts-tab").parent().removeClass("mm-active");
+
+                $("#documents-tab").removeClass("mm-active");
+                $("#documents-tab").parent().removeClass("mm-active");
+
+                $("#requestedDocuments-tab").removeClass("mm-active");
+                $("#requestedDocuments-tab").parent().removeClass("mm-active");
+
+                $("#address-tab").removeClass("mm-active");
+                $("#address-tab").parent().removeClass("mm-active");
+            });
+
+            $("#documents-tab").click(function () {
+                $("#documents").addClass("active show");
+                $("#dashboard").removeClass("active show");
+                $("#contacts").removeClass("active show");
+                $("#address").removeClass("active show");
+                $("#requestedDocuments").removeClass("active show");
+                $("#edit-client").removeClass("active show");
+
+                //for tabs
+                $("#dashboard-tab").removeClass("mm-active");
+                $("#dashboard-tab").parent().removeClass("mm-active");
+
+                $("#contacts-tab").removeClass("mm-active");
+                $("#contacts-tab").parent().removeClass("mm-active");
+
+                $("#documents-tab").addClass("mm-active");
+                $("#documents-tab").parent().addClass("mm-active");
+
+                $("#requestedDocuments-tab").removeClass("mm-active");
+                $("#requestedDocuments-tab").parent().removeClass("mm-active");
+
+                $("#address-tab").removeClass("mm-active");
+                $("#address-tab").parent().removeClass("mm-active");
+            });
+
+            $("#requestedDocuments-tab").click(function () {
+                $("#requestedDocuments").addClass("active show");
+                $("#documents").removeClass("active show");
+                $("#dashboard").removeClass("active show");
+                $("#contacts").removeClass("active show");
+                $("#address").removeClass("active show");
+                $("#edit-client").removeClass("active show");
+                //for tabs
+                $("#dashboard-tab").removeClass("mm-active");
+                $("#dashboard-tab").parent().removeClass("mm-active");
+
+                $("#contacts-tab").removeClass("mm-active");
+                $("#contacts-tab").parent().removeClass("mm-active");
+
+                $("#documents-tab").removeClass("mm-active");
+                $("#documents-tab").parent().removeClass("mm-active");
+
+                $("#requestedDocuments-tab").addClass("mm-active");
+                $("#requestedDocuments-tab").parent().addClass("mm-active");
+
+                $("#address-tab").removeClass("mm-active");
+                $("#address-tab").parent().removeClass("mm-active");
+            });
+
+           
+
+            $("#edit-client-button").click(function(){
+                $("#edit-client").addClass("active show");
+                $("#address").removeClass("active show");
+                $("#documents").removeClass("active show");
+                $("#dashboard").removeClass("active show");
+                $("#contacts").removeClass("active show");
+                $("#requestedDocuments").removeClass("active show");
+            });
+
+            $("#dashboard-button").click(function(){
+                $("#edit-client").removeClass("active show");
+                $("#address").removeClass("active show");
+                $("#documents").removeClass("active show");
+                $("#dashboard").addClass("active show");
+                $("#contacts").removeClass("active show");
+                $("#requestedDocuments").removeClass("active show");
+            });
+        });
+
+        // document.getElementById("contacts-tab").addEventListener("click",()=>{
+        //     document.getElementById("dashboard").classList.remove("active", "show");
+        //     document.getElementById("contacts").classList.add("active", "show");
+        // });
+
+        // document.getElementById("dashboard-tab").addEventListener("click",()=>{
+        //     document.getElementById("dashboard").classList.add("active", "show");
+        //     document.getElementById("contacts").classList.remove("active", "show");
+        // });
+
+
     </script>
+    <!-- <script src="main_js/client-dashboard.js"></script> -->
+
 </body>
 
 <!-- Mirrored from w3crm.dexignzone.com/xhtml/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Nov 2023 18:21:16 GMT -->

@@ -231,6 +231,61 @@ let Customer = [
     "CDDA Report Submitted": "",
     "KYC Requested": "",
     "KYC Received": "",
+  },
+  {
+    "Office": "5",
+    "CaseCode": "AACA001",
+    "Name": "AA Catering Limited",
+    "Closed": "",
+    "Date Marked as Dead/Blocked": "",
+    "Lead IP": "Nicholas Andrew Stratten",
+    "Second IP": "Hasib Howlader",
+    "Staff": "NS/HH",
+    "Case Manager": "",
+    "Case Admin": "",
+    "Cashier": "Nicola Pendry",
+    "Type": "CVL",
+    "JOB": "AACA001",
+    "Appointed on": "",
+    "Start": "",
+    "Award": "",
+    "Source of Work": "",
+    "Bank": "",
+    "Agent": "",
+    "Accountant": "",
+    "Solicitor": "",
+    "Expected Fee Date": "",
+    "Fee Basis": "Time and Expenses",
+    "Fee Resolution Date": "",
+    "Fee Estimate (Pre)": 6000,
+    "Set Fee (Pre)": "False",
+    "Fee Estimate (Post)": 1,
+    "Set Fee (Post)": "False",
+    "Current Fee (Manual)": "",
+    "Pre App Fee (Calculated)": "",
+    "Post App Fee (Calculated)": "",
+    "Bank Balance (GBP)": 0,
+    "Foreign Accounts": "",
+    "VAT Number": "",
+    "Deregistration Date": "",
+    "Company Registration No": "10578497",
+    "Nature of Business": "",
+    "UK SIC Code": "56101",
+    "Pension Scheme": "No",
+    "Committee Appointed": "",
+    "CourtAppointed By": "",
+    "Court No": "",
+    "Court Year": "",
+    "A in B Ref": "",
+    "OfficeUse": "",
+    "OfficeUse2": "",
+    "OfficeUse3": "",
+    "OfficeUse4": "",
+    "OfficeUse5": "",
+    "Date Case Added": "10/14/2021",
+    "CDDA Report Submitted": "",
+    "KYC Requested": "",
+    "KYC Received": "",
   }
 ];
 var cls;
@@ -245,7 +300,9 @@ $(document).ready(function () {
     // Toggle the visibility of dxDataGridAllContacts and dxDataGridAllContacts_data
     $("#dxDataGridAllContacts, #dxDataGridAllContacts_data").toggle();
 });
-
+$(document).on("click", "#createRequest_button", function () {
+   $("#offcanvasExample").show();
+});
   function getAllContacts() {
     cls.getAllContactsForList(GetProjectId, function (status, Data) {
       if (status) {
@@ -282,12 +339,12 @@ $(document).ready(function () {
         columnAutoWidth: true,
 
         selection: {
-            mode: "single"
+            mode: "multiple"
         },
         loadPanel: {
             enabled: true
         },
-
+        
         //paging: {
         //    pageSize: 5
         //},
@@ -297,6 +354,11 @@ $(document).ready(function () {
         //    allowedPageSizes: [5, 10, 20],
         //    showInfo: true
         //},
+        headerFilter: {
+          visible: true,
+        },
+        filterRow: { visible: true },
+        showColumnHeaders: true,
         scrolling: {
             mode: 'virtual',
         },
@@ -614,7 +676,7 @@ $(document).ready(function () {
             let bta = window.btoa(JSON.stringify(e.data));
             function doubleClick() {
 
-                var stringURl = "client-dashboard.html?Data=" + bta;
+                var stringURl = "client-dashboard.html";
                 // console.log("view messsage url",stringURl);
                 window.open(stringURl);
 

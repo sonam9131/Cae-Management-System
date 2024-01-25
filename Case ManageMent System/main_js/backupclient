@@ -1,41 +1,7 @@
 var ViewerToken = localStorage.getItem("ViewerToken");
 
 var APIURL = "https://practicetest.docusoftweb.com/PracticeServices.asmx/";
-function genralAjax1(data, methosName, callback) {
-  if (data !== "") {
-    $.ajax({
-      type: "POST",
-      url: APIURL+ methosName,
-      data: data,
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      success: function (msg) {
-       return callback(msg);
-      },
-      error: function (e) {
-        //alert(e.statusText + " failed");
 
-       // console.log("Network Error !\n Please check your data connection ! Try again");
-        return callback(e.responseText)
-      },
-    });
-  } else {
-    //alert("else");
-    $.ajax({
-      type: "POST",
-      url: APIURL + methosName,
-      data: "{}",
-      // contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      success: function (msg) {
-        callback(msg);
-      },
-      error: function (e) {
-        console.log("Network Error !\n Please check your data connection ! Try again");
-      },
-    });
-  }
-}
 var agrno = localStorage.getItem("agrno");
 var Email = localStorage.getItem("Email");
 var password = localStorage.getItem("pass");
@@ -269,109 +235,7 @@ let generalsArray = [
   },
   // Add more role objects as needed
 ];
-
-let sideBarList = [
-  {
-    title: "Case Details", icon: `<i style="font-size:22px; width:32px; color:#0D99FF" class="bi bi-house-door"></i>`
-  },
-  {
-    title: "Contacts", icon: `<i style="font-size:22px; width:32px; color:#0D99FF" class="bi bi-person"></i>`
-  },
-  {
-    title: "Assignment Details", icon: `<i style="font-size:22px; width:32px; color:#0D99FF" class="bi bi-info-circle"></i>`
-  },
-  {
-    title: "Meetings and Tasks", icon: `<i style="font-size:22px; width:32px; color:#0D99FF" class="bi bi-list-task"></i>`
-  },
-  {
-    title: "Documents", icon: `<i style="font-size:22px; width:32px; color:#0D99FF" class="bi bi-file-earmark"></i>`
-  },
-  {
-    title: "Chart of accounts", icon: `<i style="font-size:22px; width:32px; color:#0D99FF" class="bi bi-bar-chart"></i>`
-  },
-  {
-    title: "Assets Group", icon: `<i style="font-size:22px; width:32px; color:#0D99FF" class="bi bi-people"></i>`
-  },
-  {
-    title: "Monthly income/expenditure", icon: `<i style="font-size:22px; width:32px; color:#0D99FF" class="bi bi-wallet2"></i>`
-  },
-  {
-    title: "Income contributions", icon: `<i style="font-size:22px; width:32px; color:#0D99FF" class="bi bi-people"></i>`
-  },
-  {
-    title: "Pre-appointment details", icon: `<i style="font-size:22px; width:32px; color:#0D99FF" class="bi bi-calendar"></i>`
-  },
-  {
-    title: "Postal Resolutions", icon: `<i style="font-size:22px; width:32px; color:#0D99FF" class="bi bi-bookmark"></i>`
-  },
-];
-
-let keyFacts = [
-  { title: "Case Code", value: " " },
-  { title: "Pre/Post", value: " " },
-  { title: "Case Name", value: " " },
-  { title: "Case Progress", value: " " },
-  { title: "Trading as", value: " " },
-  { title: "Company Number", value: " " },
-  { title: "Company Address", value: " " },
-  { title: "Trading address", value: " " },
-  { title: "Incorporate date", value: " " },
-  { title: "Ceased trading", value: " " },
-  { title: "Case Type", value: " " },
-  { title: "Case Size", value: " " },
-  { title: "Instructed on", value: " " },
-  { title: "Appointment Date", value: " " },
-  { title: "Appointed by", value: " " },
-  { title: "Uploaded to portal", value: " " },
-  { title: "IP release date", value: " " },
-  { title: "Dissolved date", value: " " },
-  { title: "VAT deregistration date", value: " " },
-  { title: "Decision date", value: " " },
-  { title: "Bond value", value: " " },
-  { title: "Date Marked as Dead/Blocked", value: " " }
-];
-
-let keyFactsTeamRawData = [
-  "Lead IP Name",
-  "Lead IP Date",
-  "Second IP Name",
-  "Second IP Date",
-  "Third IP Name",
-  "Third IP Date",
-  "Manager Name",
-  "Manager Date",
-  "Assistant Manager Name",
-  "Assistant Manager Date",
-  "Investigations manager Name",
-  "Investigations manager Date",
-  "Closures Manager Name",
-  "Closures Manager Date",
-  "Administrator 1 Name",
-  "Administrator 1 Date",
-  "Administrator 2 Name",
-  "Administrator 2 Date",
-];
-
-let keyFactsIdRawData = [
-  "VAT",
-  "PAYE",
-  "CT",
-  "CIS",
-  "RPS case ref",
-  "Pension Scheme Reference Number",
-];
-
-let WIPFeeAppRaw = [
-  "Admin and planning/Stat reporting",
-  "assets",
-  "investigations",
-  "Creditors",
-  "TOTAL Time Approval",
-  "Fixed Fee",
-  "Total Fee Approval",
-];
-
-
+let AllTaskList =[];
 var cls;
 $(document).ready(function () {
   var windowHeight = window.innerHeight + "px";
@@ -388,24 +252,65 @@ $(document).ready(function () {
   //     // Toggle the visibility of dxDataGridAllContacts11 and dxDataGridAllContacts11_data
   //     //$("#dxDataGridAllContacts11, #dxDataGridAllContacts11_data").toggle();
   // });
-  
-  $(document).on("click", "#CreateNewTask", function () { 
-    $("#CreateNewTask_modal").modal("show");
+  $("#contacts-tab").click(function () {
+    $("#contacts").addClass("active show");
+    $("#documents").removeClass("active show");
+    $("#dashboard").removeClass("active show");
+    $("#address").removeClass("active show");
+    $("#requestedDocuments").removeClass("active show");
+    $("#edit-client").removeClass("active show");
+
+    //for tabs
+    $("#dashboard-tab").removeClass("mm-active");
+    $("#dashboard-tab").parent().removeClass("mm-active");
+
+    $("#contacts-tab").addClass("mm-active");
+    $("#contacts-tab").parent().addClass("mm-active");
+
+    $("#documents-tab").removeClass("mm-active");
+    $("#documents-tab").parent().removeClass("mm-active");
+
+    $("#requestedDocuments-tab").removeClass("mm-active");
+    $("#requestedDocuments-tab").parent().removeClass("mm-active");
+
+    $("#address-tab").removeClass("mm-active");
+    $("#address-tab").parent().removeClass("mm-active");
+    getAllContacts();
   });
-  $(document).on("click", "#tab-5", function () {
+  getAlltasks();
+  $("#address-tab").click(function () {
+    $("#address").addClass("active show");
+    $("#documents").removeClass("active show");
+    $("#dashboard").removeClass("active show");
+    $("#contacts").removeClass("active show");
+    $("#requestedDocuments").removeClass("active show");
+    $("#edit-client").removeClass("active show");
+    //for tabs
+    $("#dashboard-tab").removeClass("mm-active");
+    $("#dashboard-tab").parent().removeClass("mm-active");
+
+    $("#contacts-tab").removeClass("mm-active");
+    $("#contacts-tab").parent().removeClass("mm-active");
+
+    $("#documents-tab").removeClass("mm-active");
+    $("#documents-tab").parent().removeClass("mm-active");
+
+    $("#requestedDocuments-tab").removeClass("mm-active");
+    $("#requestedDocuments-tab").parent().removeClass("mm-active");
+
+    $("#address-tab").addClass("mm-active");
+    $("#address-tab").parent().addClass("mm-active");
+     getAlltasks();
+  });
+  $(document).on("click", "#showhideGrid", function () {
+
+  });
+  $(document).on("click", "#documents-tab", function () {
     console.log("showdata");
     showAlltask(Alltask_data);
     // Toggle the visibility of dxDataGridAllContacts11 and dxDataGridAllContacts11_data
     // $("#dxDataGridAllContacts11, #dxDataGridAllContacts11_data").toggle();
   });
-  getAlltasks();
-  $(document).on("click", "#tab-3", function () {
-    // console.log("showdata");
-    // showtasksById(Alltask_data);
-    console.log("show mwwtings and tasks");
-    
-  });
-
   function getAllContacts() {
     cls.getAllContactsForList(GetProjectId, function (status, Data) {
       if (status) {
@@ -425,6 +330,7 @@ $(document).ready(function () {
       }
     });
   }
+ 
   function getAlltasks() {
     cls.Json_GetOutlookTask(function (status, Data) {
       if (status) {
@@ -776,7 +682,7 @@ $(document).ready(function () {
       columnAutoWidth: true,
 
       selection: {
-        mode: "single",
+        mode: "multiple",
       },
       loadPanel: {
         enabled: true,
@@ -815,8 +721,12 @@ $(document).ready(function () {
         // selectTextOnEditStart: true,
         // startEditAction: 'click',
       },
-
+      headerFilter: {
+        visible: true,
+      },
+      filterRow: { visible: true },
       showColumnHeaders: true,
+      
       columns: [
         {
           dataField: "Key",
@@ -978,10 +888,10 @@ $(document).ready(function () {
       var iconHtml = '<span class="dx-icon dx-icon-edit"></span>'; // Example: Edit icon
       header.append(
         '<div class="custom-header">' +
-        iconHtml +
-        "<div>" +
-        info.column.caption +
-        "</div></div>"
+          iconHtml +
+          "<div>" +
+          info.column.caption +
+          "</div></div>"
       );
     }
     grid.refresh(); // or grid.repaint();
@@ -991,7 +901,7 @@ $(document).ready(function () {
     grid.columnOption("Request", "headerTemplate", customHeaderTemplate);
   }
   function showAlltask(getdata) {
-    let gridOptions = {
+    let showAlltask = {
       dataSource: getdata,
       export: {
         enabled: true,
@@ -1006,7 +916,7 @@ $(document).ready(function () {
       columnAutoWidth: true,
 
       selection: {
-        mode: "single",
+        mode: "multiple",
       },
       loadPanel: {
         enabled: true,
@@ -1024,6 +934,11 @@ $(document).ready(function () {
       scrolling: {
         mode: "virtual",
       },
+      headerFilter: {
+        visible: true,
+      },
+      filterRow: { visible: true },
+      showColumnHeaders: true,
       remoteOperations: false,
       searchPanel: {
         visible: true,
@@ -1134,19 +1049,17 @@ $(document).ready(function () {
 
     var grid = new DevExpress.ui.dxDataGrid(
       document.getElementById("dxDataGridAllTasks"),
-      gridOptions
+      showAlltask
     );
-
-
 
     function customHeaderTemplate(header, info) {
       var iconHtml = '<span class="dx-icon dx-icon-edit"></span>'; // Example: Edit icon
       header.append(
         '<div class="custom-header">' +
-        iconHtml +
-        "<div>" +
-        info.column.caption +
-        "</div></div>"
+          iconHtml +
+          "<div>" +
+          info.column.caption +
+          "</div></div>"
       );
     }
     grid.refresh(); // or grid.repaint();
@@ -1601,426 +1514,29 @@ $(document).ready(function () {
   });
 
   //launch
-  let creator_html = "creditors-profile.html";
-  let director_html = "directors-profile.html";
-  let employee_html = "employees-profile.html";
-  let shareholder_html = "shareholders-profile.html";
-  let general_html = "general-profile.html";
+  
+  
+  
+  
+  
   $(document).on("click", "#launch_creditor_data", function () {
+    let creator_html = "creditors-profile.html";
     window.open(creator_html);
   });
   $(document).on("click", "#launch_director_data", function () {
+    let director_html = "directors-profile.html";
     window.open(director_html);
   });
   $(document).on("click", "#launch_employee_data", function () {
+    let employee_html = "employees-profile.html";
     window.open(employee_html);
   });
   $(document).on("click", "#launch_shareholders_data", function () {
+    let shareholder_html = "shareholders-profile.html";
     window.open(shareholder_html);
   });
   $(document).on("click", "#launch_generals_data", function () {
+    let general_html = "general-profile.html";
     window.open(general_html);
   });
-
-  //sidebar code
-  let menuHTML = "";
-  sideBarList.map((data, i) => {
-    menuHTML += `
-                <li id="tab-${i}" class="tab-${i} tab-button">
-                        <a style="color:#0D99FF" href="#tab-${i}-page" data-bs-toggle="pill"
-                            class="nav-link tab-link-${i}" aria-expanded="false">
-                            <div class="menu-icon">
-                                ${data.icon}
-                            </div>
-                            <span class="nav-text">${data.title}</span>
-                        </a>
-                    </li>
-                `;
-  });
-  document.getElementById("my-menu").innerHTML = menuHTML;
-  let menuButtons = document.getElementsByClassName("tab-button");
-  
-  //default tab selection start
-  document.getElementsByClassName("tab-0")[0].style.backgroundColor="#0D99FF";
-  document.getElementsByClassName("tab-link-0")[0].style.color="white";
-  document.getElementsByClassName("tab-button")[0].children[0].children[0].children[0].style.color="white";
-  //default tab selection end
-
-  function handleSideBar(liClass, aClass) {
-    for (let i = 0; i < menuButtons.length; i++) {
-      if (menuButtons[i].classList[0] == liClass) {
-        menuButtons[i].style.backgroundColor = "#0D99FF";
-        document.getElementsByClassName(aClass)[0].style.color = "white";
-        document.getElementsByClassName(aClass)[0].children[0].children[0].style.color="white";
-        document.getElementById(`${menuButtons[i].classList[0]}-page`).style.display = "block";
-      } else {
-        menuButtons[i].style.backgroundColor = "white";
-        document.getElementsByClassName("tab-button")[i].children[0].children[0].children[0].style.color="#0D99FF";
-        menuButtons[i].children[0].style.color = "#0D99FF";
-        document.getElementById(`${menuButtons[i].classList[0]}-page`).style.display = "none";
-      }
-    }
-  }
-  for (let i = 0; i < menuButtons.length; i++) {
-    if (i != 0) {
-      document.getElementById(`${menuButtons[i].classList[0]}-page`).style.display = "none";
-    }
-    menuButtons[i].addEventListener("click", () => {
-      let liClass = menuButtons[i].classList[0];
-      let aClass = menuButtons[i].children[0].classList[1];
-      handleSideBar(liClass, aClass);
-    });
-  }
-
-  //DYNAMIC DASHBOARD fields code
-  //function which makes accordion's field
-  function makeFields(key) {
-    let HTML = "";
-    key.map((item) => {
-      HTML += `
-                  <div style="padding:15px 60px 0px 60px;" class="row">
-                      <div class="col-5 fw-bold">
-                          ${item.title}
-                      </div>
-                      <div class="col-5 fw-bold">
-                          ${item.value}
-                      </div>
-                  </div>
-                  `;
-    });
-    return HTML;
-  }
-  // key facts code
-  let keyFactsHTML = makeFields(keyFacts);
-  document.getElementById("keyFacts").innerHTML = keyFactsHTML;
-
-  // key facts-team code
-  let keyFactsTeam = keyFactsTeamRawData.map((item) => {
-    return { title: item, value: " " };
-  });
-  let keyFactsTeamHTML = makeFields(keyFactsTeam);
-  document.getElementById("keyFactsTeam").innerHTML = keyFactsTeamHTML;
-
-  //key facts-ID code
-  let keyFactsID = keyFactsIdRawData.map((item) => {
-    return { title: item, value: " " };
-  });
-  let keyFactsIdHTML = makeFields(keyFactsID);
-  document.getElementById("keyFactsId").innerHTML = keyFactsIdHTML;
-
-  //WIP - Fee Approval
-  let WIPFeeApproval = keyFactsIdRawData.map((item) => {
-    return { title: item, value: " " };
-  });
-  let WIPFeeApprovalHTML = makeFields(WIPFeeApproval);
-  document.getElementById("WIPFeeApproval").innerHTML = WIPFeeApprovalHTML;
-
-  //dateTimePicker
-  $('#datetimePicker').datetimepicker({
-    format: 'DD/MM/YYYY hh:mm A',
-    // minDate: moment().subtract(1, 'years'),  // Set the minimum allowed date (e.g., one year ago)
-    // maxDate: moment().add(1, 'years'),  // Set the desired date format
-  });
-
-  for (let i = 1; i <= 9; i++) {
-    $(`#datetimePicker${i}`).datetimepicker({
-      format: 'DD/MM/YYYY hh:mm A',
-    });
-  }
-
-  //code for navigate b/w client edit or normal dashboard fields
-  document.getElementById("editable-dashboard").style.display="none";
-  $(document).on("click","#edit-client-button",function(){
-    document.getElementById("editable-dashboard").style.display="block";
-    document.getElementById("dashboard").style.display="none";
-  });
-  $(document).on("click","#dashboard-button",function(){
-    document.getElementById("editable-dashboard").style.display="none";
-    document.getElementById("dashboard").style.display="block";
-  });
-  $(document).on('click', '#append-content-button', function () {
-       
-    $('#target-div').toggle();
-  // Json_GetAccountUsersContactsByClient(cid);
-   Json_GetForwardUserList();
-});
-
-  // Code for Notes Start
-  $(document).on("click", ".CList", function () {
-    setNotesEditor();
-});
-try{
-  var editorBtn = document.getElementById('editorBtn');
-	var element = document.getElementById('editor');
-
-	editorBtn.addEventListener('click', function(e) {
-	  e.preventDefault();
-
-	  if (element.isContentEditable) {
-	    // Disable Editing
-	    element.contentEditable = 'false';
-	    editorBtn.innerHTML = 'Enable Editing';
-	    // You could save any changes here.
-	  } else {
-	    element.contentEditable = 'true';
-	    editorBtn.innerHTML = 'Disable Editing';
-	  }
-	});
-}catch (e){}
-function setNotesEditor() {
-  //value= markup
-  let editor = $(".html-editor").dxHtmlEditor({
-      height: 200,
-      value: markup,
-      toolbar: {
-          items: [
-              "undo", "redo", "separator",
-              {
-                  name: "size",
-                  acceptedValues: ["8pt", "10pt", "12pt", "14pt", "18pt", "24pt", "36pt"]
-              },
-              {
-                  name: "font",
-                  acceptedValues: ["Arial", "Courier New", "Georgia", "Impact", "Lucida Console", "Tahoma", "Times New Roman", "Verdana"]
-              },
-              "separator", "bold", "italic", "strike", "underline", "separator",
-              "alignLeft", "alignCenter", "alignRight", "alignJustify", "separator",
-              "orderedList", "bulletList", "separator",
-              {
-                  name: "header",
-                  acceptedValues: [false, 1, 2, 3, 4, 5]
-              }, "separator",
-              "color", "background", "separator",
-              "link", "image", "separator",
-              "clear", "codeBlock", "blockquote", "separator",
-              "insertTable", "deleteTable",
-              "insertRowAbove", "insertRowBelow", "deleteRow",
-              "insertColumnLeft", "insertColumnRight", "deleteColumn"
-          ]
-      },
-      mediaResizing: {
-          enabled: true
-      }
-  }).dxHtmlEditor("instance");
-}
-   //start Get Forward User List
-   function getInitialsFromName(name) {
-    const words = name.split(' ');
-    if (words.length >= 2) {
-        const firstName = words[0];
-        const lastName = words[words.length - 1];
-        const initials = firstName[0] + (lastName ? lastName[0] : '');
-        return initials;
-    } else if (words.length === 1) {
-        const firstName = words[0];
-        return firstName[0] + firstName[0];
-    }
-    return '';
-}
-var getInitials = function (string) {
-  var names = string.split(' ');
-
-  if (names.length >= 2) {
-    
-      var initials = names[1].charAt(0).toUpperCase();
-      if (names.length >= 3) {
-          initials += names[2].charAt(0).toUpperCase();
-      }
-      return initials;
-  } else if (names.length === 1) {
-      // If it's a single word, use the first letter of that word
-      return names[0].charAt(0).toUpperCase();
-  } else {
-      // Handle the case when the input is empty or doesn't contain any words
-      return '';
-  }
-};
-
-function uuidv4() {
-  return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
-      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-  );
-}
-function Json_GetForwardUserList() {
-  let obj = {};
-  obj.agrno=agrno;
-  obj.Email=Email;
-  obj.password=password;
-  obj.ProjectId = GetProjectId;
-  obj.SectionId = "-1";
-  cls.Json_GetForwardUserList(obj, function (status, Data) {
-      if (status) {
-          var json = Data['Table'];
-
-          console.log('Json_GetForwardUserList', json);
-  cls.setForwardUser = json;
-  let dd = json;
-          // let result = dd.map((el) => {
-          //     let o = Object.assign({}, el);
-          //     o.guid = uuidv4();
-          //     return o;
-          // })
-          
-  
-          let result = dd.map((el) => {
-            let o = Object.assign({}, el);
-            o.guid = uuidv4();
-            return o;
-        })
-
-        cls.setForwardList = result;               
-        // usernameArray_data1.push(result);
-        let count = 0;
-        let ul = "";
-        //ul += `<ul class="timeline">`;
-        ul = `<input style="margin-bottom: 5px" type="text" id="forwardSearch" class="form-control form-control-sm" placeholder="Search..." />`;
-        ul += `<ul class="timeline" id="flist">`;
-        for (let item of result) {
-            count++;
-            let no = "success";
-            if (count % 2 == 0) {
-                no = "warning";
-            }
-            ul += `<li class="userlistClick" name="${item.ForwardTo}" id="${item.guid}">
-                                            <div class="timeline-panel">
-                                                <div class="media me-2 media-${no}" style="    background: #ed990a;
-color: white;">
-                                                   ${getInitialsFromName(item.ForwardTo)}
-                                                </div>
-                                                <div class="media-body">
-                                                    <h5 class="mb-1">${item.ForwardTo}</h5>
-                                                    <small class="d-block">${item.ID}</small>
-                                                </div>
-                                               
-                                            </div>
-                                        </li>`;
-        }
-        ul += `</ul>`;
-        $("#activeuserlist_data").html(ul);
-        //start search
-        let searchInput = document.getElementById("forwardSearch");
-        let list = document.getElementById("flist");
-        let items = list.getElementsByTagName("li");
-        // Add an input event listener to the search input
-        searchInput.addEventListener("input", function () {
-            const searchTerm = searchInput.value.toLowerCase();
-            for (let i = 0; i < items.length; i++) {
-                const item = items[i];
-                const text = item.textContent.toLowerCase();
-                if (text.includes(searchTerm)) {
-                    item.style.display = "block";
-                } else {
-                    item.style.display = "none";
-                }
-            }
-        });
-        ////end search box
-
-    }
-
-
-      
-  })
-}
-
-    let selectAllStateUpload = false;
-    let nextContactSpanId = 1;
-    let nextUserSpanId = 1;
-    $(document).on("click", ".userlistClick", function () {
-      let gid = $(this).attr('id');
-
-      let createNewArr = [];
-      const newArray = cls.setForwardList.filter((el) => {
-          if (el.guid != gid) {
-              createNewArr.push(el);
-          }
-      });
-      console.log("createNewArr", createNewArr);
-
-      $(".txtUserName").text(getInitials($(this).attr('name')));
-      usernameArray_data = [];
-      const name = $(this).attr('name');
-      const initials = getInitialsFromName(name);
-
-      // Generate a unique ID for the new user span
-      const spanId = `userSpan${nextUserSpanId}`;
-      nextUserSpanId++;
-
-      // Create a new user span element with the calculated initials
-      const newUserSpan = $(`<span id="${spanId}" class="txtUserName mediaCustom" style="    background: #ed990a;
-  color: white;">${initials}</span>`);
-
-      // Append the new user span to the container
-      $("#dynamicContainer").append(newUserSpan);
-      console.log(newUserSpan[0], "newContactSpan", initials, "initials", name, "name", spanId, "spanId");
-      let object = {
-          "flname": initials,
-          "name": name,
-          "spanId": spanId
-      }
-      usernameArray_data.push(object);
-      console.log(usernameArray_data, "usernameArray_data ");
-      $("#" + gid).hide();
-  });
-  // Click event handler for dynamically generated spans
-  $(document).on("click", ".txtUserName", function () {
-      console.log("txtUserName", $(this).attr('name'));
-      // Hide the clicked span
-      $(this).hide();
-      let count = 0;
-      let ul = "";
-      //ul += `<ul class="timeline">`;
-      ul = `<input style="margin-bottom: 5px" type="text" id="forwardSearch" class="form-control form-control-sm" placeholder="Search..." />`;
-
-      ul += `<ul class="timeline" id="flist">`;
-      for (let item of cls.setForwardList) {
-          count++;
-          let no = "success";
-          if (count % 2 == 0) {
-              no = "warning";
-          }
-
-          ul += `<li class="userlistClick" name="${item.ForwardTo}" id="${item.guid}">
-                                                  <div class="timeline-panel">
-                                                      <div class="media me-2 media-${no}" style="    background: #ed990a;
-  color: white;">
-                                                         ${getInitialsFromName(item.ForwardTo)}
-                                                      </div>
-                                                      <div class="media-body">
-                                                          <h5 class="mb-1">${item.ForwardTo}</h5>
-                                                          <small class="d-block">${item.ID}</small>
-                                                      </div>
-                                                     
-                                                  </div>
-                                              </li>`;
-      }
-      ul += `</ul>`;
-      $("#activeuserlist_data").html(ul);
-      
-
-  });
-  CreatFolderOption([{
-    "FolderID": 15,
-    "Folder": "Client",
-    "FolderPath": "",
-    "CLMandatory": "No"
-},{
-  "FolderID": 13,
-  "Folder": "Bin",
-  "FolderPath": "",
-  "CLMandatory": "No"
-},{
-  "FolderID": 17,
-  "Folder": "Cases",
-  "FolderPath": "",
-  "CLMandatory": "No"
-}])
-  function CreatFolderOption(AllFolder, ProjectId = 17) {
-    console.log("AllFolder: ", AllFolder);
-    $("#Task_Folder").empty();
-    for (var i = 0; i < AllFolder.length; i++) {
-        $("#Task_Folder").append('<option   value="' + AllFolder[i].FolderID + '">' + AllFolder[i].Folder + '</option>');
-    }
-    $("#Task_Folder").val(ProjectId);
-}
 });
