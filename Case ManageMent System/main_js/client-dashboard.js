@@ -1758,6 +1758,7 @@ $(document).ready(function () {
 $(document).on("click", ".CList_wps", function () {
   setNotesEditor_wps();
 });
+
 try{
   var editorBtn = document.getElementById('editorBtn');
 	var element =   document.getElementById('editor');
