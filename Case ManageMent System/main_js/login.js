@@ -1,5 +1,5 @@
 //var APIURL = "https://mydocusoft.com/DSDesktopWebService.asmx/";
-var APIURL = "https://practicetest.docusoftweb.com/PracticeServices.asmx/";
+var APIURL = "https://docusms.uk/dsdesktopwebservice.asmx/";
 
 function genralAjax(data, methosName, callback) {
     //   alert(data + " " + methosName);
