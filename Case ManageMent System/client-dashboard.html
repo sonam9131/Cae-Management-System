@@ -64,6 +64,10 @@
   box-sizing: border-box;
   width: 100%;
 } */
+.float_Right {
+    float: right;
+    padding: 5px 10px;
+}
 h1{
     font-family: system-ui;
 }
@@ -3008,7 +3012,7 @@ h1{
                        
 
                             <div class="">
-                                <div class="basic-form">
+                                <div class="container">
 
                                     <div class="row">
                                         <div class="col-xl-8">
@@ -3018,7 +3022,7 @@ h1{
                                                
                                                 <div class="content-title flex-wrap" style="    color: unset;
                                             
-                                                font-weight: unset;">
+                                                font-weight: unset; padding: unset;">
                                                     <div class="cpa align-items-center " style="width: 100%; max-width: 100%;color: unset;font-weight: unset;">
                                                         
                                                         <!-- <h6 class="mb-0">Subject</h6> -->
@@ -3028,7 +3032,7 @@ h1{
                                                            
                                                             <div class="col mb-3">
                                                                 <!-- <i class="fa-solid fa-book"></i> -->
-                                                                <div id="editor" >
+                                                                <div id="editor" contenteditable="true">
                                                         <h2>Subject Line</h2>
                                                                 </div>
                                                             </div>
@@ -3037,159 +3041,133 @@ h1{
                                                         <div class="row">
                                                             <div class="col">
                                                                 <h4>Description</h4> 
-                                                                <div id="editor1" >
-                                                                <span style="position: absolute;
-                                                                left: 6%;
-                                                                top: 26%;">Add a more details description...</span>
+                                                                <div id="editor1" contenteditable="true">
+                                                                <span >Add a more details description...</span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         
                                                     </div>
-                                                    <button class="btn btn-primary mt-4" id="editorBtn" type="button">Enable Editing</button>
+                                                    <!-- <button class="btn btn-primary mt-4" id="editorBtn" type="button">Enable Editing</button> -->
                                                         
                                                     <!-- <button type="button" class="btn btn-secondary light ms-sm-auto mb-2 mb-sm-0">Save Menu</button> -->
                                                 </div>
-                                                <div class="cm-content-body form excerpt rounded-0">
+                                                <div class="cm-content-body form excerpt rounded-0" style="border-top: unset;">
                                                     <div class="card-body">
                                                        
-                                                        <div class="col-xl-7">
-                                                            <div class="dd" id="nestable">
-                                                                <ol class="dd-list">
-                                                                    <li class="dd-item menu-ac-item" data-id="1">
-                                                                        <!-- <div class="dd-handle"></div> -->
-                                                                        <div class="accordion" id="accordionExample-1">
-                                                                            <div class="accordion-item" style="width: 165%;">
-                                                                                <div class="accordion-header p-0" id="heading-1">
-                                                                                    <div class="move-media dd-handle">
-                                                                                        <i class="fa-solid fa-arrows-up-down-left-right"></i>
-                                                                                    </div>
-                                                                                  <button class="accordion-button contact" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
-                                                                                    Details
-                                                                                  </button>
-                                                                                </div>
-                                                                                <div id="collapse-1" class="accordion-collapse collapse" aria-labelledby="heading-1" data-bs-parent="#accordionExample-1">
-                                                                                    <div class="accordion-body">
-                                                                                        <textarea rows="3" name="changes in Details" id="Task_DetailsText" class="floating-select form-control fullheight commanClass"></textarea>
-                             											
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                   
-                                                                    <li class="dd-item menu-ac-item" data-id="3">
-                                                                        <div class="accordion" id="accordionExample-3">
-                                                                            <div class="accordion-item" style="width: 165%;">
-                                                                                <div class="accordion-header p-0" id="heading-3">
-                                                                                    <div class="move-media dd-handle">
-                                                                                        <i class="fa-solid fa-arrows-up-down-left-right"></i>
-                                                                                    </div>
-                                                                                  <button class="accordion-button contact" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="true" aria-controls="collapse-3">
-                                                                                    Attachments
-                                                                                  </button>
-                                                                                </div>
-                                                                                <div id="collapse-3" class="accordion-collapse collapse" aria-labelledby="heading-3" data-bs-parent="#accordionExample-3">
-                                                                                    <div class="accordion-body">
-                                                                                        <div class="row mb-2" id="ShowAddAttachment">
-                                                                                            <form class="uploadfile">
-                                                                                                <div class="">
-                                                                                                    <input name="changes in Uploadfile" id="UploadFile" class="commanClass" multiple type="file" name="file" accept="image/jpeg, image/x-citrix-jpeg, application/pdf, text/plain, image/png, image/x-citrix-png, image/x-png, text/plain, message/rfc822, image/tiff, video/jpeg, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/msword, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/zip, video/mp4, application/mp4, audio/mp4" />
-                                                                                                    <p>Drag and Drop your file here or click in this area.</p>
+                                                        <div class="container" style="margin-top: unset;">
+                                                            <div class="row">
+                                                                <div class="col-sm-8">
+                                                                    <div class="dd" id="nestable">
+                                                                        <ol class="dd-list">
+                                                                           
+                                                                           
+                                                                            <li class="dd-item menu-ac-item" data-id="3">
+                                                                                <div class="accordion" id="accordionExample-3">
+                                                                                    <div class="accordion-item" style="width: 165%;">
+                                                                                        <div class="accordion-header p-0" id="heading-3">
+                                                                                            <div class="move-media dd-handle">
+                                                                                                <i class="fa-solid fa-arrows-up-down-left-right"></i>
+                                                                                            </div>
+                                                                                          <button class="accordion-button contact" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="true" aria-controls="collapse-3">
+                                                                                            Attachments
+                                                                                          </button>
+                                                                                        </div>
+                                                                                        <div id="collapse-3" class="accordion-collapse collapse" aria-labelledby="heading-3" data-bs-parent="#accordionExample-3">
+                                                                                            <div class="accordion-body">
+                                                                                                <div class="row mb-2" id="ShowAddAttachment">
+                                                                                                    <form class="uploadfile">
+                                                                                                        <div class="">
+                                                                                                            <input name="changes in Uploadfile" id="UploadFile" class="commanClass" multiple type="file" name="file" accept="image/jpeg, image/x-citrix-jpeg, application/pdf, text/plain, image/png, image/x-citrix-png, image/x-png, text/plain, message/rfc822, image/tiff, video/jpeg, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/msword, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/zip, video/mp4, application/mp4, audio/mp4" />
+                                                                                                            <p>Drag and Drop your file here or click in this area.</p>
+                                                                                                        </div>
+                                                                                                    </form>
                                                                                                 </div>
-                                                                                            </form>
+                                                                                                <div class="row">
+                                                                                                    <ul class="themeicon" id="TaskAttechment"></ul>
+                                                                                                </div>
+                                                                                                            
+                                                                                            </div>
                                                                                         </div>
-                                                                                        <div class="row">
-                                                                                            <ul class="themeicon" id="TaskAttechment"></ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                            <li class="dd-item menu-ac-item" data-id="4">
+                                                                                <div class="accordion" id="accordionExample-4">
+                                                                                    <div class="accordion-item" style="width: 165%;">
+                                                                                        <div class="accordion-header p-0" id="heading-4">
+                                                                                            <div class="move-media dd-handle">
+                                                                                                <i class="fa-solid fa-arrows-up-down-left-right"></i>
+                                                                                            </div>
+                                                                                          <button class="accordion-button contact CList" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-4" aria-expanded="true" aria-controls="collapse-4">
+                                                                                            Notes
+                                                                                          </button>
                                                                                         </div>
-                                                                                                    
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li class="dd-item menu-ac-item" data-id="4">
-                                                                        <div class="accordion" id="accordionExample-4">
-                                                                            <div class="accordion-item" style="width: 165%;">
-                                                                                <div class="accordion-header p-0" id="heading-4">
-                                                                                    <div class="move-media dd-handle">
-                                                                                        <i class="fa-solid fa-arrows-up-down-left-right"></i>
-                                                                                    </div>
-                                                                                  <button class="accordion-button contact CList" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-4" aria-expanded="true" aria-controls="collapse-4">
-                                                                                    Notes
-                                                                                  </button>
-                                                                                </div>
-                                                                                <div id="collapse-4" class="accordion-collapse collapse" aria-labelledby="heading-4" data-bs-parent="#accordionExample-4">
-                                                                                    <div class="accordion-body">
-                                                                                        <textarea name="" id="editors" cols="30" rows="10">
-                                                                                        </textarea>
-                                                                                        <!-- <div class="html-editor commanClass" id="changesineditor" name="changes in notes">
-                                                                                        </div>												 -->
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <!-- <li class="dd-item menu-ac-item" data-id="5">
-                                                                        <div class="accordion" id="accordionExample-5">
-                                                                            <div class="accordion-item" style="width: 165%;">
-                                                                                <div class="accordion-header p-0" id="heading-5">
-                                                                                    <div class="move-media dd-handle">
-                                                                                        <i class="fa-solid fa-arrows-up-down-left-right"></i>
-                                                                                    </div>
-                                                                                  <button class="accordion-button contact" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-5" aria-expanded="true" aria-controls="collapse-5">
-                                                                                    Documents
-                                                                                  </button>
-                                                                                </div>
-                                                                                <div id="collapse-5" class="accordion-collapse collapse" aria-labelledby="heading-5" data-bs-parent="#accordionExample-5">
-                                                                                    <div class="accordion-body">
-                                                                                        <div class="row">
-                                                                                            <div class="col-xl-6">
-                                                                                                <form>
-                                                                                                  <div class="mb-3">
-                                                                                                    <label  class="form-label">Navigation Label</label>
-                                                                                                    <input type="text" class="form-control" placeholder="Important Information">
-                                                                                                  </div>
-                                                                                                </form>
+                                                                                        <div id="collapse-4" class="accordion-collapse collapse" aria-labelledby="heading-4" data-bs-parent="#accordionExample-4">
+                                                                                            <div class="accordion-body">
+                                                                                                <textarea name="" id="editors" cols="30" rows="10">
+                                                                                                </textarea>
+                                                                                                <!-- <div class="html-editor commanClass" id="changesineditor" name="changes in notes">
+                                                                                                </div>												 -->
                                                                                             </div>
-                                                                                            <div class="col-xl-6">
-                                                                                                <form>
-                                                                                                  <div class="mb-3">
-                                                                                                    <label  class="form-label">Title Attribute</label>
-                                                                                                    <input type="text" class="form-control" placeholder="">
-                                                                                                  </div>
-                                                                                                </form>
-                                                                                            </div>
-                                                                                            <div class="col-xl-12">
-                                                                                                <p class="dz-terms">Original: <a href="javascript:void(0);">Terms and Conditions</a></p>
-                                                                                            </div>
-                                                                                            <div class="d-flex align-items-center">
-                                                                                                <a href="javascript:void(0);">Remove</a><span class="mx-2">|</span>
-                                                                                                <a href="javascript:void(0);"  type="button" data-bs-toggle="collapse" data-bs-target="#collapse-5" aria-expanded="false" aria-controls="collapse-5">
-                                                                                                Cancel
-                                                                                              </a>
-                                                                                            </div>
-                                                                                        </div>												
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li> -->
-                                                                </ol>
+                                                                            </li>
+                                                                            <!-- <li class="dd-item menu-ac-item" data-id="5">
+                                                                                <div class="accordion" id="accordionExample-5">
+                                                                                    <div class="accordion-item" style="width: 165%;">
+                                                                                        <div class="accordion-header p-0" id="heading-5">
+                                                                                            <div class="move-media dd-handle">
+                                                                                                <i class="fa-solid fa-arrows-up-down-left-right"></i>
+                                                                                            </div>
+                                                                                          <button class="accordion-button contact" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-5" aria-expanded="true" aria-controls="collapse-5">
+                                                                                            Documents
+                                                                                          </button>
+                                                                                        </div>
+                                                                                        <div id="collapse-5" class="accordion-collapse collapse" aria-labelledby="heading-5" data-bs-parent="#accordionExample-5">
+                                                                                            <div class="accordion-body">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-xl-6">
+                                                                                                        <form>
+                                                                                                          <div class="mb-3">
+                                                                                                            <label  class="form-label">Navigation Label</label>
+                                                                                                            <input type="text" class="form-control" placeholder="Important Information">
+                                                                                                          </div>
+                                                                                                        </form>
+                                                                                                    </div>
+                                                                                                    <div class="col-xl-6">
+                                                                                                        <form>
+                                                                                                          <div class="mb-3">
+                                                                                                            <label  class="form-label">Title Attribute</label>
+                                                                                                            <input type="text" class="form-control" placeholder="">
+                                                                                                          </div>
+                                                                                                        </form>
+                                                                                                    </div>
+                                                                                                    <div class="col-xl-12">
+                                                                                                        <p class="dz-terms">Original: <a href="javascript:void(0);">Terms and Conditions</a></p>
+                                                                                                    </div>
+                                                                                                    <div class="d-flex align-items-center">
+                                                                                                        <a href="javascript:void(0);">Remove</a><span class="mx-2">|</span>
+                                                                                                        <a href="javascript:void(0);"  type="button" data-bs-toggle="collapse" data-bs-target="#collapse-5" aria-expanded="false" aria-controls="collapse-5">
+                                                                                                        Cancel
+                                                                                                      </a>
+                                                                                                    </div>
+                                                                                                </div>												
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li> -->
+                                                                        </ol>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4"></div>
                                                             </div>
                                                         </div>
                                                     </div>		
                                                 </div>
-                                                <!-- <div class="filter cm-content-box box-primary style-1 mb-0 border-0">
-                                                    <div class="content-title">
-                                                        <div class="cpa">
-                                                            Delete Menu
-                                                        </div>
-                                                        <button type="button" class="btn btn-secondary light my-2">Save Menu</button>
-                                                    </div>
-                                                </div> -->
                                                 
-                                              
                                                 </div>
                                         </div>
                                         <div class="col-xl-4">
@@ -3344,30 +3322,58 @@ h1{
                                                     </div>
                                                     
                                                 </div> -->
-                                                <div class="card mb-2">
+                                                <div class="card mb-2" id="cardHeader_startdate">
+                                                    <div class="card-header py-3" >
+                                                        <div id="handle-startdate">
+                                                            <h4 class="heading mb-0"  id="append-by-startdate"><i style="font-size:22px; width:32px; color:#0D99FF;padding-right: 15px;" class="bi bi-calendar-date" id=""></i>Start Date</h4>
+                                                        </div>
+                                                        <input name="datepicker" 
+                                                        type="date" class="datepicker-default form-control picker__input picker__input--active picker__input--target"  style="width: 50%;" id="Task_StartTime">
+       
+                                                        <!-- <div id="test_startdate" style="display: none;" class="dropdown-menu dropdown-menu-end show" data-bs-popper="static">
+                                                            <div id="DZ_W_Notification1" class="widget-media dz-scroll p-3" style="height:50px;">
+                                                                <ul class="timeline">
+                                                                   
+                                                                    <div id="test-startdate-list">
+                                                                        
+                                                                    </div>
+                                                                </ul>
+                                                            </div>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="card mb-2">
                                                     <div class="card-header py-3">
                                                         <h4 class="heading mb-0"><i style="font-size:22px; width:32px; color:#0D99FF;padding-right: 15px;" class="bi bi-calendar-date"></i>Start Date</h4>
                                                     </div>
-                                                    <!-- <div class="card-body px-0 py-2">
-                                                        <ul class="personal-info">
-                                                            <li><a href="javascript:void(0);"><i class="fa-solid fa-user text-primary me-2"></i> Profile</a></li>
-                                                            <li><a href="javascript:void(0);"><i class="fa-solid fa-lock text-primary me-2"></i> Password</a></li>
-                                                            <li><a href="javascript:void(0);"><i class="fa-solid fa-calendar-days text-primary me-2"></i> Date</a></li>
-                                                        </ul>
-                                                    </div> -->
+                                                   
+                                                </div> -->
+
+                                                <div class="card mb-2" id="cardHeader_duedate">
+                                                    <div class="card-header py-3" >
+                                                        <div id="handle-duedate">
+                                                            <h4 class="heading mb-0"  id="append-by-duedate"><i style="font-size:22px; width:32px; color:#0D99FF;padding-right: 15px;" class="bi bi-calendar-date" ></i>Due Date</h4>
+                                                        </div>
+                                                        <input name="datepicker" 
+                                                        type="date" class="datepicker-default form-control picker__input picker__input--active picker__input--target"  style="width: 50%;" id="Task_Date_EndBy">
+                                                        <!-- <div id="test_duedate" style="display: none;" class="dropdown-menu dropdown-menu-end show" data-bs-popper="static">
+                                                            <div id="DZ_W_Notification1" class="widget-media dz-scroll p-3" style="height:50px;">
+                                                                <ul class="timeline">
+                                                                    
+                                                                    <div id="test-duedate-list">
+                                                                       
+                                                                    </div>
+                                                                </ul>
+                                                            </div>
+                                                        </div> -->
+                                                    </div>
                                                 </div>
-                                                <div class="card mb-2">
+                                                <!-- <div class="card mb-2">
                                                     <div class="card-header py-3">
                                                         <h4 class="heading mb-0"><i style="font-size:22px; width:32px; color:#0D99FF;padding-right: 15px;" class="bi bi-calendar-date"></i>Due Date</h4>
                                                     </div>
-                                                    <!-- <div class="card-body px-0 py-2">
-                                                        <ul class="personal-info">
-                                                            <li><a href="javascript:void(0);"><i class="fa-solid fa-user text-primary me-2"></i> Profile</a></li>
-                                                            <li><a href="javascript:void(0);"><i class="fa-solid fa-lock text-primary me-2"></i> Password</a></li>
-                                                            <li><a href="javascript:void(0);"><i class="fa-solid fa-calendar-days text-primary me-2"></i> Date</a></li>
-                                                        </ul>
-                                                    </div> -->
-                                                </div>
+                                                   
+                                                </div> -->
 
                                                 <div class="card mb-2" id="cardHeader_owner">
                                                     <div class="card-header py-3" >
@@ -3418,247 +3424,10 @@ h1{
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- <div class="card">
-                                                    <div class="card-header py-3">
-                                                        <h4 class="heading mb-0"><i style="font-size:22px; width:32px; color:#0D99FF;padding-right: 15px;" class="bi bi-info-circle"></i>Add Assignee</h4>
-                                                    </div>
-                                                    
-                                                </div> -->
-                                                <div class="row" style="display: none;">
-                                                <div class="widget-stat card mb-0" style="        background: rgb(177 189 199 / 10%);
-    border-color: rgb(177 189 199 / 10%);">
-                                                    <div class="card-body p-4">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <h6 class="mb-0">Folder</h6>
-                                                                <select name="changes in folder" class="form-control selectFolder commanClass" isOwner="true" id="Task_Folder" ></select>
-             
-                                                            </div>
-                                                            
-                                                           
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <h6 class="mb-0">Reference</h6>
-                
-                                                                <!-- <label for="task_quoted" id="commanClass_label">Folder</label> -->
-                                                                <select name="changes in reference" class="form-control selectClient commanClass" isOwner="true" id="Task_AssociateWithClient"></select>
-                                                               
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <h6 class="mb-0">Section</h6>
-                
-                        <!-- <label for="task_quoted" id="commanClass_label">Folder</label> -->
-                        <select name="changes in section"class="form-control selectSection commanClass" isOwner="true" id="Task_Section"></select>
-                         
-                                                            </div>
-                                                        </div>
-                                                        <!-- <div class="media ai-icon">
-                                                            
-                                                            <div class="media-body">
-                                                                <p class="mb-1">Patient</p>
-                                                                <h4 class="mb-0">3280</h4>
-                                                                <span class="badge badge-primary">+3.5%</span>
-                                                            </div>
-                                                        </div> -->
-                                                    </div>
-                                                </div>
-                                               </div>
-                                               <div class="row" style="display: none;">
-                                                <div class="widget-stat card mb-0" style="        background: rgb(177 189 199 / 10%);
-    border-color: rgb(177 189 199 / 10%);
-                                                border-color: var(--rgba-primary-1);">
-                                                    <div class="card-body p-4">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <h6 class="mb-0">Status </h6>
-                                                                <select name="changes in status" class="form-control selectStatus commanClass" id="Task_Status"></select>     </div>
-                                                                <div class="col">
-                                                                    <h6 class="mb-0">Priority </h6>
-                    
-                            <!-- <label for="task_quoted" id="commanClass_label">Folder</label> -->
-                            <select name="changes in priority" class="form-control selectPriority commanClass " isOwner="true" id="Task_Priority"></select>
-                        </div>
-                                                            
-                                                           
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <h6 class="mb-0">Complete %</h6>
-                
-                                                                <!-- <label for="task_quoted" id="commanClass_label">Folder</label> -->
-                                                                <input type="range" min="1" max="100" value="0" name="changes in complete percentage" class="slider commanClass percentage" id="Task_Complete" style="width: 100%;">
-
-                                      
-                                                            </div>
-                                                        </div>
-                                                       
-                                                        <!-- <div class="media ai-icon">
-                                                            
-                                                            <div class="media-body">
-                                                                <p class="mb-1">Patient</p>
-                                                                <h4 class="mb-0">3280</h4>
-                                                                <span class="badge badge-primary">+3.5%</span>
-                                                            </div>
-                                                        </div> -->
-                                                    </div>
-                                                </div>
-                                               </div>
-
-                                              
-                                               <div class="row" style="display: none;">
-                                                <div class="widget-stat card mb-0" style="        background: rgb(177 189 199 / 10%);
-    border-color: rgb(177 189 199 / 10%);">
-                                                    <div class="card-body p-4">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <h6 class="mb-0">Start Date</h6>
-                                                                <input name="changes in Task Start Date" type="date" id="Task_StartTime"  isOwner="true" class="floating-select TableMode form-control commanClass">
-
-                                             </div>
-                                             <div class="col">
-                                                <h6 class="mb-0">Due Date
-                                                </h6>
-                                                <input name="changes in Task End Date" type="date" id="Task_EndTime" isOwner="true" class="floating-select TableMode form-control commanClass">
-
-                                            </div> 
-                                                           
-                                                        </div>
-                                                       
-                                                       
-                                                    </div>
-                                                </div>
-                                               </div>
-                                              
-                                               <div class="row" style="display: none;">
-                                                <div class="widget-stat card mb-0" style="        background: rgb(177 189 199 / 10%);
-                                                border-color: rgb(177 189 199 / 10%);">
-                                                    <div class="card-body p-4">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <h6 class="mb-0">Owner</h6>
-                                                                <select name="changes in Owner" class="form-control selectUser commanClass"  isOwner="true" id="Task_Owner"></select>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div class="container">
-                                                                    <div class="row">
-                                                                       
-                                                                        <div id="assingeanddragdrop">
-                                                                            <div class="row rightSidePannel" style="    background-color: var(--primary) !important;
-                                                                            ">
-                                                                                <div class="col">
-                                                                                    <div class="btn-group" role="group">
-                                                                                        <button type="button" class="btn btn-primary dropdown-toggle" id="append-content-button" style=""> Add Assignee </button>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col">
-                                                                                    <div class="avatar-list avatar-list-stacked my-2 table-responsive" id="dynamicContainer" style="display:flex;width:400px">
-                                                                
-                                                                                    </div> 
-                                                                                </div>
-                                                                            </div>
-                                                                            
-                                                                            
-                                                                            </div>
-                                                                    </div>
-                                                                    <div id="target-div" class="row" style="display:none">
-                    
-                                                                        <!-- <div class="col-xl-6  col-lg-6">
-                                                                            <div class="card-header">
-                                                                                <h4 class="card-title">Contact Available</h4>
-                                                                            </div>
-                                                                            <div class="card-body">
-                                                                                <div class="widget-media dz-scroll height370  px-4">
-                                                                                    <div id="contactlist_data"></div>
-                                
-                                                                                </div>
-                                                                            </div>
-                                                                        </div> -->
-                                                                        <div class="col-xl-12">
-                                                                            <div class="card-header">
-                                                                                <h4 class="card-title">User Available </h4>
-                                                                            </div>
-                                                                            <div class="card-body">
-                                                                                <div class="widget-media dz-scroll height370  px-4">
-                                                                                    <div id="activeuserlist_data"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                
-                                
-                                                                    </div>
-                                                                   </div> 
-                                                            </div>
-                                                        </div>
-                                                       
-                                                    </div>
-                                                </div>
-                                               </div>
-                                             
-                                            
+                                               
                                                 </div>
                                                
-                                                <!-- <div class="card">
-                                                    <div class="card-header border-0 pb-0">
-                                                        <h4 class="card-title">Timeline 2</h4>
-                                                    </div>
-                                                    <div class="card-body p-0">
-                                                        <div id="DZ_W_TimeLine11" class="widget-timeline dz-scroll style-1 height370 my-4 px-4">
-                                                            <ul class="timeline">
-                                                                <li>
-                                                                    <div class="timeline-badge primary"></div>
-                                                                    <a class="timeline-panel" href="#">
-                                                                        <span>10 minutes ago</span>
-                                                                        <h6 class="mb-0">Youtube, a video-sharing website, goes live <strong class="text-primary">$500</strong>.</h6>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="timeline-badge info">
-                                                                    </div>
-                                                                    <a class="timeline-panel" href="#">
-                                                                        <span>20 minutes ago</span>
-                                                                        <h6 class="mb-0">New order placed <strong class="text-info">#XF-2356.</strong></h6>
-                                                                        <p class="mb-0">Quisque a consequat ante Sit amet magna at volutapt...</p>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="timeline-badge danger">
-                                                                    </div>
-                                                                    <a class="timeline-panel" href="#">
-                                                                        <span>30 minutes ago</span>
-                                                                        <h6 class="mb-0">john just buy your product <strong class="text-warning">Sell $250</strong></h6>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="timeline-badge success">
-                                                                    </div>
-                                                                    <a class="timeline-panel " href="#">
-                                                                        <span>15 minutes ago</span>
-                                                                        <h6 class="mb-0">StumbleUpon is acquired by eBay. </h6>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="timeline-badge warning">
-                                                                    </div>
-                                                                    <a class="timeline-panel " href="#">
-                                                                        <span>20 minutes ago</span>
-                                                                        <h6 class="mb-0">Mashable, a news website and blog, goes live.</h6>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="timeline-badge dark">
-                                                                    </div>
-                                                                    <a class="timeline-panel " href="#">
-                                                                        <span>20 minutes ago</span>
-                                                                        <h6 class="mb-0">Mashable, a news website and blog, goes live.</h6>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
+                                        
                                             </div>
                                         
                                         </div>
@@ -3668,6 +3437,10 @@ h1{
 
                                 </div>
                             
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary createNewTask_data">Save changes</button>
                         </div>
                     </div>
                     <!-- <div class="modal-footer">
@@ -4127,16 +3900,16 @@ h1{
                                                                                 </div>
                                                                                 <div id="collapse-3" class="accordion-collapse collapse" aria-labelledby="heading-3" data-bs-parent="#accordionExample-3">
                                                                                     <div class="accordion-body">
-                                                                                        <div class="row mb-2" id="ShowAddAttachment">
-                                                                                            <form class="uploadfile">
+                                                                                        <div class="row mb-2" id="">
+                                                                                            <form class="">
                                                                                                 <div class="">
-                                                                                                    <input name="changes in Uploadfile" id="UploadFile" class="commanClass" multiple type="file" name="file" accept="image/jpeg, image/x-citrix-jpeg, application/pdf, text/plain, image/png, image/x-citrix-png, image/x-png, text/plain, message/rfc822, image/tiff, video/jpeg, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/msword, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/zip, video/mp4, application/mp4, audio/mp4" />
+                                                                                                    <input name="changes in Uploadfile" id="" class="commanClass" multiple type="file" name="file" accept="image/jpeg, image/x-citrix-jpeg, application/pdf, text/plain, image/png, image/x-citrix-png, image/x-png, text/plain, message/rfc822, image/tiff, video/jpeg, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/msword, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/zip, video/mp4, application/mp4, audio/mp4" />
                                                                                                     <p>Drag and Drop your file here or click in this area.</p>
                                                                                                 </div>
                                                                                             </form>
                                                                                         </div>
                                                                                         <div class="row">
-                                                                                            <ul class="themeicon" id="TaskAttechment"></ul>
+                                                                                            <ul class="themeicon" id=""></ul>
                                                                                         </div>
                                                                                                     
                                                                                     </div>
@@ -4151,7 +3924,7 @@ h1{
                                                                                     <div class="move-media dd-handle">
                                                                                         <i class="fa-solid fa-arrows-up-down-left-right"></i>
                                                                                     </div>
-                                                                                  <button class="accordion-button contact CList" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-4" aria-expanded="true" aria-controls="collapse-4">
+                                                                                  <button class="accordion-button contact " type="button" data-bs-toggle="collapse" data-bs-target="#collapse-4" aria-expanded="true" aria-controls="collapse-4">
                                                                                     Notes
                                                                                   </button>
                                                                                 </div>
@@ -4483,7 +4256,19 @@ h1{
                 </div>
             </div>
         </div>
-
+        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false" id="mi-modal">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel"></h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dou" id="modal-btn-si">Yes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="modal-btn-no">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--**********************************
             Footer start
         ***********************************-->

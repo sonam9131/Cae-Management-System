@@ -1,6 +1,8 @@
 var ViewerToken = localStorage.getItem("ViewerToken");
 // var APIURL = "https://docusms.uk/dsdesktopwebservice.asmx/";
 var APIURL = "https://docusms.uk/dsdesktopwebservice.asmx/";
+let globalEditorInstance; // Declare a global variable to store the editor instance
+
 function genralAjax1(data, methosName, callback) {
   if (data !== "") {
     $.ajax({
@@ -63,7 +65,11 @@ let StatusData1 = [
 
   }
 ];
-
+let FileData = [];
+let fileName = [];
+let Size = 0;
+let fileNameArray = [];
+let TaskAttechment = [];
 let PriorityData = [
   {
       "PriorityID": 0,
@@ -2857,55 +2863,50 @@ $(document).on('click', '#appendcontentpop', function () {
 
   // Code for Notes Start
   $(document).on("click", ".CList", function () {
+    //$("#editors").empty();
     setNotesEditor();
 });
 $(document).on("click", ".CList_wps", function () {
   setNotesEditor_wps();
 });
 
-try{
-  var editorBtn = document.getElementById('editorBtn');
-	var element =   document.getElementById('editor');
-  let element1 =  document.getElementById('editor1');
-	editorBtn.addEventListener('click', function(e) {
-	  e.preventDefault();
+// try {
+//   var element = document.getElementById('editor');
+//   var element1 = document.getElementById('editor1');
 
-	  if (element.isContentEditable) {
-	    // Disable Editing
-	    element.contentEditable = 'false';
-      element1.contentEditable='false';
-	    editorBtn.innerHTML = 'Enable Editing';
-	    // You could save any changes here.
-	  } else {
-	    element.contentEditable = 'true';
-      element1.contentEditable='true';
-	    editorBtn.innerHTML = 'Disable Editing';
-	  }
-	});
-}catch (e){}
+//   document.addEventListener('click', function(e) {
+//       // Check if the clicked element is "Subject Line" or "Description"
+//       if (e.target === element) {
+//           element.contentEditable = 'true';
+//           element.focus(); // Optional: Focus on the element for immediate editing
+//       } else {
+//           // If clicked element is not "Subject Line", make it non-editable
+//           element.contentEditable = 'false';
+//       }
+
+//       if (e.target === element1) {
+//           element1.contentEditable = 'true';
+//           element1.focus(); // Optional: Focus on the element for immediate editing
+//       } else {
+//           // If clicked element is not "Description", make it non-editable
+//           element1.contentEditable = 'false';
+//       }
+//   });
+// } catch (e) {}
 let markup1 = "this is a comment"
 function setNotesEditor() {
-  ClassicEditor
-  .create( document.querySelector( '#editors' ))
-  .catch( error => {
-      console.error( error );
-  } );
-  // CKEDITOR.replace('editors', {
-  //   skin: 'moono',
-  //   enterMode: CKEDITOR.ENTER_BR,
-  //   shiftEnterMode:CKEDITOR.ENTER_P,
-  //   toolbar: [{ name: 'basicstyles', groups: [ 'basicstyles' ], items: [ 'Bold', 'Italic', 'Underline', "-", 'TextColor', 'BGColor' ] },
-  //              { name: 'styles', items: [ 'Format', 'Font', 'FontSize' ] },
-  //              { name: 'scripts', items: [ 'Subscript', 'Superscript' ] },
-  //              { name: 'justify', groups: [ 'blocks', 'align' ], items: [ 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ] },
-  //              { name: 'paragraph', groups: [ 'list', 'indent' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent'] },
-  //              { name: 'links', items: [ 'Link', 'Unlink' ] },
-  //              { name: 'insert', items: [ 'Image'] },
-  //              { name: 'spell', items: [ 'jQuerySpellChecker' ] },
-  //              { name: 'table', items: [ 'Table' ] }
-  //              ],
-  // });
-  
+  if (!globalEditorInstance) {
+    ClassicEditor
+    .create(document.querySelector('#editors'))
+    .then(editor => {
+        // Store the editor instance in the global variable
+        globalEditorInstance = editor;
+    })
+    .catch(error => {
+        console.error(error);
+    });
+  }
+ 
 }
 
 
@@ -3452,12 +3453,47 @@ obj.ProjectId = GetProjectId;
 }
 
 $("#append-by-chetan").click(function(){
-  $("#test").css("display","block");
+  $("#test").toggle();
+  $("#test_ref").hide()
+$("#test_sec ").hide()
+
+  $("#test_status").hide()
+
+  $("#test_priority").hide()
+
+  $("#test_complete").hide()
+
+$("#test_duedate ").hide()
+
+$("#test_startdate ").hide()
+
+$("#test_assignee ").hide()
+
+
+$("#test_owner ").hide()
+
   GetChetanFolders();
 });
 
 $("#append-by-reference").click(function(){
-  $("#test_ref").css("display","block");
+  $("#test_ref").toggle();
+  $("#test").hide();
+$("#test_sec ").hide()
+
+  $("#test_status").hide()
+
+  $("#test_priority").hide()
+
+  $("#test_complete").hide()
+
+$("#test_assignee ").hide()
+
+$("#test_owner ").hide()
+
+$("#test_duedate ").hide()
+
+$("#test_startdate ").hide()
+
   GetReferences();
 });
 
@@ -3517,7 +3553,7 @@ $(document).on("click", ".reference-userlistClick", function () {
   console.log("createNewArr", createNewArr);
 
   $(".txtUserName").text(getInitials($(this).attr('name')));
-  usernameArray_ref = [];
+  let usernameArray_ref = [];
   const name = $(this).attr('name');
   const initials = getInitialsFromName(name);
 
@@ -3535,15 +3571,18 @@ color: white;">${initials}</span>`);
   let object = {
       "flname": initials,
       "name": name,
-      "spanId": spanId
+      "spanId": spanId,
+      "id":gid
   }
   usernameArray_ref.push(object);
   console.log(usernameArray_ref, "usernameArray_ref ");
   if(usernameArray_ref.length>0){
     $("#handle-referece").html(`
+    <span style="display:none" id="refdata">${usernameArray_ref[0].id}</span>
     <h4 class="heading mb-0  appendreferenc"><i style="font-size:22px; width:32px; color:#0D99FF;padding-right: 15px;" class="bi bi-person " id="cardHeader_ref"></i>${usernameArray_ref[0].name}</h4>
     `);
     $("#test_ref").css("display","none");
+    $("#refdata").text();
    
   }
 
@@ -3561,7 +3600,7 @@ color: white;">${initials}</span>`);
       console.log("createNewArr", createNewArr);
 
       $(".txtUserName").text(getInitials($(this).attr('name')));
-      usernameArray_data = [];
+      let usernameArray_data = [];
       const name = $(this).attr('name');
       const initials = getInitialsFromName(name);
 
@@ -3579,16 +3618,19 @@ color: white;">${initials}</span>`);
       let object = {
           "flname": initials,
           "name": name,
-          "spanId": spanId
+          "spanId": spanId,
+          "id":gid
       }
       usernameArray_data.push(object);
       console.log(usernameArray_data, "usernameArray_data ");
       if(usernameArray_data.length>0){
         $("#handle-bug").html(`
+        <span style="display:none" id="sonamdata">${usernameArray_data[0].id}</span>
         <h4 class="heading mb-0  appendchetan"><i style="font-size:22px; width:32px; color:#0D99FF;padding-right: 15px;" class="bi bi-wallet2 " id=""></i>${usernameArray_data[0].name}</h4>
         `);
         $("#test").css("display","none");
-       
+        $("#sonamdata").text();
+         console.log($("#sonamdata").text(),"gggggggggggggggggggggggggggggggg")
       }
    
       $("#" + gid).hide();
@@ -3596,11 +3638,38 @@ color: white;">${initials}</span>`);
 
 $(document).on("click",".appendchetan",function(){
   GetChetanFolders();
-  $("#test").css("display","block");
+  //$("#test").css("display","block");
+  $("#test").toggle()
+  $("#test_ref").hide()
+$("#test_sec ").hide()
+
+  $("#test_status").hide()
+
+  $("#test_priority").hide()
+
+  $("#test_complete").hide()
+
+$("#test_assignee ").hide()
+
+$("#test_owner ").hide()
+
 });
 $(document).on("click",".appendreferenc",function(){
   GetReferences();
-  $("#test_ref").css("display","block");
+  $("#test_ref").toggle();
+  $("#test").hide()
+$("#test_sec ").hide()
+
+  $("#test_status").hide()
+
+  $("#test_priority").hide()
+
+  $("#test_complete").hide()
+
+$("#test_assignee ").hide()
+
+$("#test_owner ").hide()
+
 });
 
 //sections
@@ -3659,7 +3728,24 @@ function GetSections() {
 
 
 $("#append-by-section").click(function(){
-  $("#test_sec").css("display","block");
+  $("#test_sec").toggle();
+  $("#test_ref").hide()
+$("#test ").hide()
+
+  $("#test_status").hide()
+
+  $("#test_priority").hide()
+
+  $("#test_complete").hide()
+
+$("#test_assignee ").hide()
+
+$("#test_owner ").hide()
+
+$("#test_duedate ").hide()
+
+$("#test_startdate ").hide()
+
   GetSections();
 });
 $("#section-list-search-input").keyup(function(){
@@ -3714,16 +3800,19 @@ color: white;">${initials}</span>`);
   let object = {
       "flname": initials,
       "name": name,
-      "spanId": spanId
+      "spanId": spanId,
+      "id":gid
   }
   usernameArray_sec.push(object);
   console.log(usernameArray_sec, "usernameArray_sec ");
   if(usernameArray_sec.length>0){
     $("#handle-section").html(`
+    <span style="display:none" id="secdata">${usernameArray_sec[0].id}</span>
     <h4 class="heading mb-0  appendsection"><i style="font-size:22px; width:32px; color:#0D99FF;padding-right: 15px;" class="bi bi-info-circle " id="cardHeader_sec"></i>${usernameArray_sec[0].name}</h4>
     `);
     $("#test_sec").css("display","none");
-   
+    $("#secdata").text();
+
   }
 
   $("#" + gid).hide();
@@ -3731,7 +3820,21 @@ color: white;">${initials}</span>`);
 
 $(document).on("click",".appendsection",function(){
   GetSections();
-  $("#test_sec").css("display","block");
+  $("#test_sec").toggle();
+  $("#test_ref").hide()
+$("#test").hide()
+
+  $("#test_status").hide()
+
+  $("#test_priority").hide()
+
+  $("#test_complete").hide()
+
+$("#test_assignee ").hide()
+
+$("#test_owner ").hide()
+
+
 });
 
 
@@ -3791,7 +3894,24 @@ function GetStatus() {
 
 
 $("#append-by-status").click(function(){
-  $("#test_status").css("display","block");
+  $("#test_status").toggle();
+
+  $("#test_ref").hide()
+$("#test_sec ").hide()
+
+  $("#test").hide()
+
+  $("#test_priority").hide()
+
+  $("#test_complete").hide()
+
+$("#test_assignee ").hide()
+
+$("#test_owner ").hide()
+$("#test_duedate ").hide()
+
+$("#test_startdate ").hide()
+
   GetStatus();
 });
 $("#status-list-search-input").keyup(function(){
@@ -3846,16 +3966,18 @@ color: white;">${initials}</span>`);
   let object = {
       "flname": initials,
       "name": name,
-      "spanId": spanId
+      "spanId": spanId,
+      "id":gid
   }
   usernameArray_status.push(object);
   // console.log(usernameArray_sec, "usernameArray_sec ");
   if(usernameArray_status.length>0){
     $("#handle-status").html(`
+    <span style="display:none" id="statusdata">${usernameArray_status[0].id}</span>
     <h4 class="heading mb-0  appendstatus"><i style="font-size:22px; width:32px; color:#0D99FF;padding-right: 15px;" class="bi bi-person " id="cardHeader_status"></i>${usernameArray_status[0].name}</h4>
     `);
     $("#test_status").css("display","none");
-   
+    $("#statusdata").text();
   }
 
   $("#" + gid).hide();
@@ -3863,11 +3985,74 @@ color: white;">${initials}</span>`);
 
 $(document).on("click",".appendstatus",function(){
   GetStatus();
-  $("#test_status").css("display","block");
+  $("#test_status").toggle();
+  $("#test_ref").hide()
+$("#test_sec ").hide()
+
+  $("#test").hide()
+
+  $("#test_priority").hide()
+
+  $("#test_complete").hide()
+
+$("#test_assignee ").hide()
+
+$("#test_owner ").hide()
+
 });
 
 
 
+$(document).on("click",".createNewTask_data",function(){
+  // console.log("createNewTask_data");
+  let getoderid = "";
+  let obj = {};
+  obj.agrno=agrno;
+  obj.Email=Email;
+  obj.password=password;
+  obj.ClientIsRecurrence = false;
+  obj.StartDate = $('#Task_StartTime').val() ? $('#Task_StartTime').val() : "2024/01/30";
+  obj.ClientEnd = $('#Task_Date_EndBy').val() ? $('#Task_Date_EndBy').val() : $('#Task_StartTime').val();
+  obj.ClientDayNumber=1;
+  obj.ClientMonth =1;
+  obj.ClientOccurrenceCount=1;
+  obj.ClientPeriodicity=1;
+  obj.ClientRecurrenceRange=0;
+  obj.ClientRecurrenceType =0;
+  obj.ClientWeekDays = 1;
+  obj.ClientWeekOfMonth = 1;
+  obj.OwnerID = parseInt($("#ownerdata").text()) ?  parseInt($("#ownerdata").text()) : 97;
+  obj.AssignedToID = $("#assignedata").text();
+  obj.AssociateWithID = $("#refdata").text();
+  obj.FolderId = parseInt($("#sonamdata").text());
+  obj.Subject = "this is test by ";
+  obj.TypeofTaskID = parseInt($("#secdata").text());
+  obj.EndDateTime = "2024/01/31";
+  obj.StartDateTime = "2024/01/31";
+  obj.Status = $("#statusdata").text();
+  obj.Priority = 1;
+  obj.PercentComplete = 1;
+  obj.ReminderSet = false;
+  obj.ReminderDateTime="2024/01/30",
+  obj.TaskNo = 0;
+  obj.Attachments = "";
+  obj.Details=$("#editor1").text();
+  obj.YEDate="";
+  obj.SubDeadline = "1900/01/01";
+  obj.DocRecdate = "1900/01/01";
+  obj.ElectronicFile=false;
+  obj.PaperFile=false;
+  obj.Notes = globalEditorInstance ? globalEditorInstance :"";
+  obj.TaskSource = 'CRM';
+  console.log(obj,"created crm tk");
+  cls.Json_CRM_Task_Save(obj, function (status, Data) {
+    if(Status){
+      if(Data){
+        console.log("save crm task");
+      }
+    }
+  });
+});
 
 //priority
 
@@ -3924,8 +4109,6 @@ function GetPriority() {
   })
 }
 
-
-
 function GetComplete() {
   // $('[data-toggle="popover"]').popover('show');
   let obj = {};
@@ -3968,16 +4151,173 @@ function GetComplete() {
       
   })
 }
+function GetStarddate() {
+  // $('[data-toggle="popover"]').popover('show');
+  let obj = {};
+  obj.agrno=agrno;
+  obj.Email=Email;
+  obj.password=password;
+  // obj.ProjectId = GetProjectId;
+  // obj.SectionId = "-1";
+  cls.Json_GetFolders(obj, function (status, Data) {
+      if (status) {
+          var json = Data['Table'];
 
+          console.log('Json_GetForwardUserListuuuuuuuut', json);
+  // cls.setForwardUser = json;
+  let dd = json;
+  
+          let result = dd.map((el) => {
+            let o = Object.assign({}, el);
+            o.guid = uuidv4();
+            return o;
+        })
+
+      cls.setForwardList = result;               
+        let count = 0;
+        let rawHTML = "";
+       
+        // for (let item of PriorityData) {
+            // count++;
+            // let no = "success";
+            // if (count % 2 == 0) {
+            //     no = "warning";
+            // }
+            rawHTML = `<input type="date"  name="changes in complete percentage" class=""  style="width:100%">`;
+        // }
+        $("#test-startdate-list").html(rawHTML);
+
+    }
+
+
+      
+  })
+}
+
+function GetDuedate() {
+  // $('[data-toggle="popover"]').popover('show');
+  let obj = {};
+  obj.agrno=agrno;
+  obj.Email=Email;
+  obj.password=password;
+  // obj.ProjectId = GetProjectId;
+  // obj.SectionId = "-1";
+  cls.Json_GetFolders(obj, function (status, Data) {
+      if (status) {
+          var json = Data['Table'];
+
+          console.log('Json_GetForwardUserListuuuuuuuut', json);
+  // cls.setForwardUser = json;
+  let dd = json;
+  
+          let result = dd.map((el) => {
+            let o = Object.assign({}, el);
+            o.guid = uuidv4();
+            return o;
+        })
+
+      cls.setForwardList = result;               
+        let count = 0;
+        let rawHTML = "";
+       
+        // for (let item of PriorityData) {
+            // count++;
+            // let no = "success";
+            // if (count % 2 == 0) {
+            //     no = "warning";
+            // }
+            rawHTML = `<input type="range" min="1" max="100" value="0" name="changes in complete percentage" class="slider commanClass percentage" id="Task_Complete" style="width:100%">`;
+        // }
+        $("#test-duedate-list").html(rawHTML);
+
+    }
+
+
+      
+  })
+}
 $("#append-by-priority").click(function(){
-  $("#test_priority").css("display","block");
+  $("#test_priority").toggle()
+  $("#test_ref").hide()
+$("#test_sec ").hide()
+
+  $("#test_status").hide()
+
+  $("#test").hide()
+
+  $("#test_complete").hide()
+
+$("#test_assignee ").hide()
+
+$("#test_owner ").hide()
+
+$("#test_duedate ").hide()
+
+$("#test_startdate ").hide()
+
   GetPriority();
 });
 
 
 $("#append-by-complete").click(function(){
-  $("#test_complete").css("display","block");
+  $("#test_complete").toggle();
+  $("#test_ref").hide()
+$("#test_sec ").hide()
+
+  $("#test_status").hide()
+
+  $("#test_priority").hide()
+
+  $("#test").hide()
+
+$("#test_assignee ").hide()
+
+$("#test_owner ").hide()
+
+$("#test_duedate ").hide()
+
+$("#test_startdate ").hide()
+
    GetComplete();
+});
+$("#append-by-startdate").click(function(){
+  $("#test_startdate").toggle();
+  $("#test_ref").hide()
+  $("#test_sec ").hide()
+
+  $("#test_status").hide()
+
+  $("#test_priority").hide()
+
+  $("#test").hide()
+
+$("#test_assignee ").hide()
+
+$("#test_owner ").hide()
+
+$("#test_duedate").hide()
+
+GetStarddate();
+});
+$("#append-by-duedate").click(function(){
+  $("#test_duedate").toggle();
+  $("#test_ref").hide()
+$("#test_sec ").hide()
+
+  $("#test_status").hide()
+
+  $("#test_priority").hide()
+
+  $("#test").hide()
+
+$("#test_assignee ").hide()
+
+$("#test_owner ").hide()
+
+$("#test_startdate ").hide()
+
+
+   GetDuedate();
 });
 $("#priority-list-search-input").keyup(function(){
   let value = $("#priority-list-search-input").val();
@@ -4031,16 +4371,19 @@ color: white;">${initials}</span>`);
   let object = {
       "flname": initials,
       "name": name,
-      "spanId": spanId
+      "spanId": spanId,
+      "id":gid
   }
   usernameArray_priority.push(object);
   // console.log(usernameArray_sec, "usernameArray_sec ");
   if(usernameArray_priority.length>0){
     $("#handle-priority").html(`
+    <span style="display:none" id="prioritydata">${usernameArray_priority[0].id}</span>
     <h4 class="heading mb-0  appendpriority"><i style="font-size:22px; width:32px; color:#0D99FF;padding-right: 15px;" class="bi bi-person " id="cardHeader_priority"></i>${usernameArray_priority[0].name}</h4>
     `);
     $("#test_priority").css("display","none");
-   
+    $("#prioritydata").text();
+
   }
 
   $("#" + gid).hide();
@@ -4048,7 +4391,20 @@ color: white;">${initials}</span>`);
 
 $(document).on("click",".appendpriority",function(){
   GetPriority();
-  $("#test_priority").css("display","block");
+  $("#test_priority").toggle();
+  $("#test_ref").hide()
+$("#test_sec ").hide()
+
+  $("#test_status").hide()
+
+  $("#test").hide()
+
+  $("#test_complete").hide()
+
+$("#test_assignee ").hide()
+
+$("#test_owner ").hide()
+
 });
 
 
@@ -4108,7 +4464,24 @@ function GetOwner() {
 
 
 $("#append-by-owner").click(function(){
-  $("#test_owner").css("display","block");
+  $("#test_owner").toggle()
+  $("#test_ref").hide()
+$("#test_sec ").hide()
+
+  $("#test_status").hide()
+
+  $("#test_priority").hide()
+
+  $("#test_complete").hide()
+
+$("#test_assignee ").hide()
+
+$("#test ").hide()
+
+$("#test_duedate ").hide()
+
+$("#test_startdate ").hide()
+
   GetOwner();
 });
 $("#owner-list-search-input").keyup(function(){
@@ -4169,10 +4542,12 @@ color: white;">${initials}</span>`);
   // console.log(usernameArray_sec, "usernameArray_sec ");
   if(usernameArray_owner.length>0){
     $("#handle-owner").html(`
+    <span style="display:none" id="ownerdata">${usernameArray_sec[0].id}</span>
     <h4 class="heading mb-0  appendowner"><i style="font-size:22px; width:32px; color:#0D99FF;padding-right: 15px;" class="bi bi-person " id="cardHeader_owner"></i>${usernameArray_owner[0].name}</h4>
     `);
     $("#test_owner").css("display","none");
-   
+    $("#ownerdata").text();
+
   }
 
   $("#" + gid).hide();
@@ -4180,7 +4555,20 @@ color: white;">${initials}</span>`);
 
 $(document).on("click",".appendowner",function(){
   GetOwner();
-  $("#test_owner").css("display","block");
+  $("#test_owner").toggle();
+  $("#test_ref").hide()
+$("#test_sec ").hide()
+
+  $("#test_status").hide()
+
+  $("#test_priority").hide()
+
+  $("#test_complete").hide()
+
+$("#test_assignee ").hide()
+
+$("#test ").hide()
+
 });
 
 //Assignee
@@ -4238,8 +4626,284 @@ obj.ProjectId = GetProjectId;
 }
 
 
+function FileTypeImagePath(fileName) {
+  // for (var i = 0; i < fileName.length; i++) {
+  Typest = fileName.lastIndexOf(".");
+  var Type = fileName.slice(Typest + 1);
+  // var type = Type.toLowerCase();
+  ////alert(type);
+  var vimg;
+  //var vimg;
+
+  var typechk = Type.toLowerCase();
+
+  if (typechk === "pdf") {
+
+      vimg = "fa fa-file-pdf-o";
+
+  }
+  else if (typechk === "rtf") {
+      vimg = "fas fa-file-alt";
+
+  }
+  else if (typechk === "msg" || typechk === "eml") {
+      vimg = "fa fa-envelope";
+
+  }
+
+  else if (typechk === "docx" || typechk === "doc") {
+      vimg = "fas fa-file-word";
+
+  }
+  else if (typechk === "zip") {
+      vimg = "fas fa-file-archive";
+
+  }
+  else if (typechk == "txt") {
+      vimg = "search_icon/txt.png";
+
+  }
+  else if (typechk === "pptx") {
+      vimg = "fa fa-file-powerpoint-o";
+
+  }
+
+  else if (typechk === "mp4") {
+      vimg = "fas fa-file-video";
+
+  }
+  else if (typechk === "png") {
+      vimg = "fa fa-file-image-o";
+
+  }
+  else if (typechk === "xlsx" || typechk === "xls") {
+      vimg = "fa fa-file-excel-o";
+
+  }
+  else if (typechk === "TIFF" || typechk === "TIF") {
+      vimg = "fa fa-file-image-o";
+
+  }
+  else if (typechk === "html" || typechk === "htm") {
+      vimg = "fab fa-html5";
+
+
+  }
+  else {
+      vimg = "far fa-images";
+
+  }
+  return vimg;
+  // ////////////////////alert(vimg); 
+  return vimg;
+}
+
+
+function FileType(fileName) {
+  // for (var i = 0; i < fileName.length; i++) {
+  Typest = fileName.lastIndexOf(".");
+  var Type = fileName.slice(Typest + 1);
+  var type = Type.toUpperCase();
+  return type;
+}
+$(document).on("change", '#UploadFile', function () {
+  var counter = -1, file;
+  var regex = /^([a-zA-Z0-9\s_\\.\-:])/;
+  while (file = this.files[++counter]) {
+
+      var reader = new FileReader();
+
+      reader.onloadend = (function (file) {
+
+          return function () {
+              //  var mailAttachment = {};
+              fileName = file.name;
+              var filesize = file.size;
+
+              //  if (chk === true) {
+              byteData = this.result;
+              console.log("byteData11111=====", byteData);
+              fileByte = byteData.split(';')[1].replace("base64,", "");
+
+              if (regex.test(fileName.toLowerCase())) {
+                  var TestSize = Size + filesize;
+                  if (TestSize < "36634040") {
+                      var OBJ = {};
+                      OBJ.byteData = fileByte;
+                      OBJ.fileName = fileName;
+                      //OBJ.filesize = filesize;
+                      // OBJ.fileDate = file.lastModified; 
+                      fileNameArray.push(fileName);
+                      FileUpload(fileName, fileByte);
+                      FileData.push(OBJ);
+
+                  }
+              } else {
+                  $.alert({
+                      title: 'Alert!',
+                      content: fileName + ' is not a valid  file Name pleace remove special cherecter in file name.',
+                  });
+                  return false;
+              }
+
+              console.log("  fil", file);
+              console.log("FileData fil", FileData);
+
+          };
+
+      })(file);
+
+      reader.readAsDataURL(file);
+
+  }
+});
+
+ async function FileUpload(FileName, FileBase64) {
+        let OBJ = {};
+        OBJ.agrno=agrno;
+        OBJ.Email=Email;
+        OBJ.password =password
+        OBJ.base64File = FileBase64;
+        OBJ.FileName = FileName;
+        cls.SaveTaskAttachments(OBJ, function (status, Data) {
+          if (status) {
+            var JData = Data;
+            if (JData.Status === "Success") {
+              var dencodedData = window.atob(JData.Message);
+              AddAttechment(dencodedData);
+            }
+          }});
+        // allService.CreateNewServiceParamObject('SaveTaskAttachments', OBJ, true);
+        // var ParamName = "Param_" + 'SaveTaskAttachments';
+        // console.log('SaveTaskAttachments', allService[ParamName]);
+        // await allService.CallNewService('SaveTaskAttachments', function (status, Data) {
+        //     if (status) {
+        //         var JData = JSON.parse(Data);
+        //         if (JData.Status === "Success") {
+        //             console.log('SaveTaskAttachments', JData);
+        //             var dencodedData = window.atob(JData.Message);
+        //             AddAttechment(dencodedData);
+        //         }
+        //     }
+        // });
+    }
+var i = 0;
+function AddAttechment(path, TaskId = '0') {
+    let fileName, Typest;
+    fileName = path;
+    Typest = fileName.lastIndexOf("\\");
+    fileName = fileName.slice(Typest + 1);
+    console.log('FileName', fileName);
+    var encodedData = window.btoa(fileName);
+    let obj = {};
+    obj.FileName = fileName;
+    obj.Path = path;
+    TaskAttechment.push(obj);
+    //alert(fileName)
+    console.log('TaskAttechment', obj);
+    let str = fileName.replace(/[_\W]+/g, "-");
+    $("#TaskAttechment").append('<li class="list-group-item Delte' + i + '"  > <i class="' + FileTypeImagePath(fileName) + '" aria-hidden="true"></i> ' + fileName + '<i class="fa fa-trash float_Right Dlt" id="Dlt' + encodedData + ',' + TaskId + ',' + i + '"  aria-hidden="true" ></i><i class="fa fa-download float_Right Upload px-4" id="Upload' + encodedData + ',' + TaskId + ',' + i + '"  aria-hidden="true" ></i ></li>');
+    i++;
+}
+$(document).on("click", '.Dlt', function () {
+
+  let idstr = this.id;
+  let id = idstr.substring(3);
+  let IdArray = id.split(',');
+  $("#myModalLabel").text("Are you sure to Delete this Attachment?");
+  $("#mi-modal").modal('show');
+  $("#modal-btn-si").off('click').on("click", function () {
+
+      DeletTaskAttachment(IdArray[0], IdArray[1], IdArray[2]);
+      $("#mi-modal").modal('hide');
+  });
+});
+
+
+function DeletTaskAttachment(fileName, TaskId = '0', count) {
+  var dencodedData = window.atob(fileName);
+ 
+  var OBJ = {};
+        OBJ.agrno=agrno;
+        OBJ.EmailId=Email;
+        OBJ.password =password
+        OBJ.fileName = dencodedData;
+  OBJ.TaskId = TaskId;
+        cls.DeleteTasksAttachment(OBJ, function (status, Data) {
+          if (status) {
+            var JData = Data;
+            if (JData.Status === "Success") {
+              let str = dencodedData.replace(/[_\W]+/g, "-");
+              $('.Delte' + count).hide();
+              TaskAttechment.splice(TaskAttechment.findIndex(item => item.FileName === dencodedData), 1);
+              console.log('TaskAttechment', TaskAttechment);
+              console.log('dencodedData', dencodedData);
+            }
+          }});
+ 
+}
+$(document).on("click", '.Upload', function () {
+
+  let idstr = this.id;
+  let id = idstr.substring(6);
+  let IdArray = id.split(',');
+  var dencodedData = window.atob(IdArray[0]);
+  var TaskAttechment1 = TaskAttechment.filter(item => item.FileName === dencodedData);
+  console.log('TaskAttechment', TaskAttechment1[0].Path);
+  var EncodeBase64 = window.btoa(TaskAttechment1[0].Path);
+  // loaderHideShow();
+
+  DownLoadAttachment(EncodeBase64);
+
+});
+
+function DownLoadAttachment(Path) {
+  OBJ = {};
+  OBJ.agrno = agrno;
+  OBJ.Email = Email;
+  OBJ.password = password;
+  OBJ.path = Path;
+  //allService.CreateNewServiceParamObject('GetBase64FromFilePath', OBJ, true);
+  cls.GetBase64FromFilePath(OBJ, function (status, Data) {
+
+      if (status) {
+          var jsonObj = Data;
+          if (jsonObj.Status === "Success") {
+              var dencodedData = window.atob(Path);
+              var fileName = dencodedData;
+              var Typest = fileName.lastIndexOf("\\");
+              fileName = fileName.slice(Typest + 1);
+              console.log('FileName', fileName);
+              console.log("jsonObj.Status", jsonObj.Message);
+              var a = document.createElement("a"); //Create <a>
+              a.href = "data:" + FileType(fileName) + ";base64," + jsonObj.Message; //Image Base64 Goes here
+              a.download = fileName; //File name Here
+              a.click(); //Downloaded file
+
+          }
+
+      }
+  });
+}
 $("#append-by-assignee").click(function(){
-  $("#test_assignee").css("display","block");
+  $("#test_assignee").toggle();
+  $("#test_ref").hide()
+$("#test_sec ").hide()
+
+  $("#test_status").hide()
+
+  $("#test_priority").hide()
+
+  $("#test_complete").hide()
+
+$("#test ").hide()
+
+$("#test_owner ").hide()
+
+$("#test_duedate ").hide()
+
+$("#test_startdate ").hide()
+
   GetAssignee();
 });
 $("#assignee-list-search-input").keyup(function(){
@@ -4273,7 +4937,7 @@ $(document).on("click", ".assignee-userlistClick", function () {
           createNewArr.push(el);
       }
   });
-  console.log("createNewArr", createNewArr);
+  console.log(gid,"createNewArr", createNewArr);
 
   $(".txtUserName").text(getInitials($(this).attr('name')));
   usernameArray_assignee = [];
@@ -4294,16 +4958,19 @@ color: white;">${initials}</span>`);
   let object = {
       "flname": initials,
       "name": name,
-      "spanId": spanId
+      "spanId": spanId,
+      "id":gid
   }
   usernameArray_assignee.push(object);
-  // console.log(usernameArray_sec, "usernameArray_sec ");
+  console.log(usernameArray_assignee, "usernameArray_sec ",gid);
   if(usernameArray_assignee.length>0){
     $("#handle-assignee").html(`
-    <h4 class="heading mb-0  appendassignee"><i style="font-size:22px; width:32px; color:#0D99FF;padding-right: 15px;" class="bi bi-person" id="cardHeader_assignee"></i>${usernameArray_assignee[0].name}</h4>
+    <span style="display:none" id="assignedata">${usernameArray_sec[0].id}</span>
+    <h4 class="heading mb-0  appendassignee" ><i style="font-size:22px; width:32px; color:#0D99FF;padding-right: 15px;" class="bi bi-person" id="cardHeader_assignee"></i>${usernameArray_assignee[0].name}</h4>
     `);
     $("#test_assignee").css("display","none");
-   
+    $("#assignedata").text();
+
   }
 
   $("#" + gid).hide();
@@ -4312,5 +4979,18 @@ color: white;">${initials}</span>`);
 $(document).on("click",".appendassignee",function(){
   GetAssignee();
   $("#test_assignee").css("display","block");
+  $("#test_ref").hide()
+$("#test_sec ").hide()
+
+  $("#test_status").hide()
+
+  $("#test_priority").hide()
+
+  $("#test_complete").hide()
+
+$("#test").hide()
+
+$("#test_owner ").hide()
+
 });
 });

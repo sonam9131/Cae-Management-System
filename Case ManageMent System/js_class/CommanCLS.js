@@ -76,6 +76,74 @@ getAllContactsForList(FolderId,callBack) {
             }
         });
     }
+    
+
+    SaveTaskAttachments(obj,callBack) {
+         
+        super.CreateNewServiceParamObject('SaveTaskAttachments',obj,false);
+        super.CallNewService('SaveTaskAttachments', function (status, Data) {
+            if (status) {
+                var JData = JSON.parse(Data);
+                console.log('SaveTaskAttachments', JData);
+				if(JData !=""){
+				 return callBack(true, JData);
+				}
+               
+            } else {
+                return callBack(false, []);
+            }
+        });
+    }
+    
+    DeleteTasksAttachment(obj,callBack) {
+         
+        super.CreateNewServiceParamObject('DeleteTasksAttachment',obj,false);
+        super.CallNewService('DeleteTasksAttachment', function (status, Data) {
+            if (status) {
+                var JData = JSON.parse(Data);
+                console.log('DeleteTasksAttachment', JData);
+				if(JData !=""){
+				 return callBack(true, JData);
+				}
+               
+            } else {
+                return callBack(false, []);
+            }
+        });
+    }
+
+    GetBase64FromFilePath(obj,callBack) {
+         
+        super.CreateNewServiceParamObject('GetBase64FromFilePath',obj,false);
+        super.CallNewService('GetBase64FromFilePath', function (status, Data) {
+            if (status) {
+                var JData = JSON.parse(Data);
+                console.log('GetBase64FromFilePath', JData);
+				if(JData !=""){
+				 return callBack(true, JData);
+				}
+               
+            } else {
+                return callBack(false, []);
+            }
+        });
+    }
+    Json_CRM_Task_Save(obj,callBack) {
+         
+        super.CreateNewServiceParamObject('Json_CRM_Task_Save',obj,false);
+        super.CallNewService('Json_CRM_Task_Save', function (status, Data) {
+            if (status) {
+                var JData = JSON.parse(Data);
+                console.log('Json_CRM_Task_Save', JData);
+				if(JData !=""){
+				 return callBack(true, JData);
+				}
+               
+            } else {
+                return callBack(false, []);
+            }
+        });
+    }
     Json_GetSections(obj,callBack) {
          
         super.CreateNewServiceParamObject('Json_GetSections',obj,true);
